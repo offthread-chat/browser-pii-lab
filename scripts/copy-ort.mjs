@@ -1,6 +1,6 @@
 // Copies the ONNX Runtime files on-device redaction needs into public/, under a
 // versioned path, so the browser loads them from this site and not from a CDN.
-// The list matches the suffixes chosen in src/lib/localNer.worker.ts.
+// The list matches the suffixes chosen in src/model.worker.js.
 import { copyFileSync, mkdirSync, readFileSync } from "node:fs";
 
 const dist = new URL("../node_modules/onnxruntime-web/dist/", import.meta.url);

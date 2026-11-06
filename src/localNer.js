@@ -1,5 +1,3 @@
-import type { RedactionConfidence, RedactionType } from "./types.ts";
-
 /**
  * On-device named-entity detection.
  *
@@ -14,53 +12,12 @@ import type { RedactionConfidence, RedactionType } from "./types.ts";
  */
 
 export const LOCAL_NER_MODEL_ID = "gravitee-io/bert-small-pii-detection";
-/** Pinned so a repo update cannot silently change what runs in users' browsers. */
 export const LOCAL_NER_MODEL_REVISION =
   "f8c27a85c51c0168f07b9dcf00265bf0a4097939";
 export const LOCAL_NER_MODEL_SIZE_LABEL = "27 MB";
-/** Texts longer than this are left to the regex rules only. */
-export const LOCAL_NER_MAX_CHARS = 20_000;
-/**
- * BERT positions cap at 512 tokens. Chunks are kept well under that because
- * the estimate below is rough, especially for code and non-Latin scripts.
- */
+export const LOCAL_NER_MAX_CHARS = 20000;
 export const LOCAL_NER_CHUNK_TOKEN_BUDGET = 320;
-
-export type LocalNerStatus = "idle" | "loading" | "ready" | "unavailable";
-
-export type LocalNerToken = {
-  entity: string;
-  score: number;
-  index: number;
-  word: string;
-};
-
-export type LocalNerSpan = {
-  type: RedactionType;
-  start: number;
-  end: number;
-  confidence: RedactionConfidence;
-  score: number;
-  label: string;
-};
-
-export type LocalNerChunk = {
-  start: number;
-  text: string;
-};
-
-type AlignedToken = LocalNerToken & {
-  start: number;
-  end: number;
-};
-
-/**
- * Model labels that map onto an existing redaction type. Labels missing here
- * are dropped: URL (too many harmless links), TITLE/HONORIFIC (not
- * identifying on their own), NRP, COORDINATE, MAC_ADDRESS, IMEI and the
- * US document numbers, for which Offthread has no placeholder type yet.
- */
-const LABEL_TO_TYPE: Record<string, RedactionType> = {
+const LABEL_TO_TYPE = {
   PER: "PERSON_NAME",
   ORG: "ORGANIZATION",
   LOC: "LOCATION",
@@ -78,27 +35,18 @@ const LABEL_TO_TYPE: Record<string, RedactionType> = {
   US_BANK_NUMBER: "BANK_ACCOUNT",
   AGE: "AGE",
 };
-
 const HIGH_CONFIDENCE_SCORE = 0.8;
 const MEDIUM_CONFIDENCE_SCORE = 0.45;
-
-export function mapLocalNerLabel(label: string): RedactionType | null {
+export function mapLocalNerLabel(label) {
   return LABEL_TO_TYPE[label] ?? null;
 }
-
-export function confidenceForScore(score: number): RedactionConfidence | null {
+export function confidenceForScore(score) {
   if (!Number.isFinite(score)) return null;
   if (score >= HIGH_CONFIDENCE_SCORE) return "high";
   if (score >= MEDIUM_CONFIDENCE_SCORE) return "medium";
   return null;
 }
-
-/**
- * Rough token count for the uncased WordPiece tokenizer: Latin words split
- * into a piece or two, every CJK character is its own token, and punctuation
- * is split off.
- */
-export function estimateLocalNerTokens(text: string): number {
+export function estimateLocalNerTokens(text) {
   let count = 0;
   for (const match of text.matchAll(/[A-Za-z]+|\d+|[^\sA-Za-z\d]/gu)) {
     const token = match[0];
@@ -112,25 +60,17 @@ export function estimateLocalNerTokens(text: string): number {
   }
   return count;
 }
-
-/**
- * Splits text into chunks that fit the model window, cutting at sentence or
- * line boundaries where possible. Chunk offsets are absolute so spans found
- * in a chunk can be mapped straight back to the source text.
- */
 export function chunkTextForLocalNer(
-  text: string,
-  tokenBudget: number = LOCAL_NER_CHUNK_TOKEN_BUDGET,
-): LocalNerChunk[] {
+  text,
+  tokenBudget = LOCAL_NER_CHUNK_TOKEN_BUDGET,
+) {
   if (text.trim().length === 0) return [];
   if (estimateLocalNerTokens(text) <= tokenBudget) {
     return [{ start: 0, text }];
   }
-
-  const chunks: LocalNerChunk[] = [];
-  let current: LocalNerChunk | null = null;
-
-  const push = (segment: LocalNerChunk) => {
+  const chunks = [];
+  let current = null;
+  const push = (segment) => {
     if (segment.text.trim().length === 0) {
       if (current) current.text += segment.text;
       return;
@@ -145,7 +85,6 @@ export function chunkTextForLocalNer(
     if (current) chunks.push(current);
     current = { ...segment };
   };
-
   for (const sentence of splitSentences(text)) {
     if (estimateLocalNerTokens(sentence.text) <= tokenBudget) {
       push(sentence);
@@ -155,50 +94,36 @@ export function chunkTextForLocalNer(
       push(piece);
     }
   }
-
   if (current) chunks.push(current);
   return chunks.filter((chunk) => chunk.text.trim().length > 0);
 }
-
-function splitSentences(text: string): LocalNerChunk[] {
-  const segments: LocalNerChunk[] = [];
+function splitSentences(text) {
+  const segments = [];
   const boundary = /[^\n.!?。！？]*(?:[.!?。！？]+|\n+|$)\s*/gu;
   let cursor = 0;
-
   for (const match of text.matchAll(boundary)) {
     if (match[0].length === 0) continue;
     segments.push({ start: match.index, text: match[0] });
     cursor = match.index + match[0].length;
   }
-
   if (cursor < text.length) {
     segments.push({ start: cursor, text: text.slice(cursor) });
   }
-
   return segments;
 }
-
-function splitByBudget(
-  segment: LocalNerChunk,
-  tokenBudget: number,
-): LocalNerChunk[] {
-  const pieces: LocalNerChunk[] = [];
+function splitByBudget(segment, tokenBudget) {
+  const pieces = [];
   let current = "";
   let currentStart = segment.start;
-
   const flush = () => {
     if (current.length > 0) {
       pieces.push({ start: currentStart, text: current });
     }
     current = "";
   };
-
   for (const match of segment.text.matchAll(/\S+\s*|\s+/gu)) {
     let word = match[0];
     let wordStart = segment.start + match.index;
-
-    // A single oversized token (minified code, a long CJK run) is cut by
-    // characters as a last resort.
     while (estimateLocalNerTokens(word) > tokenBudget) {
       let cut = word.length;
       while (
@@ -214,7 +139,6 @@ function splitByBudget(
       wordStart += cut;
     }
     if (word.length === 0) continue;
-
     if (estimateLocalNerTokens(current + word) > tokenBudget) {
       flush();
       currentStart = wordStart;
@@ -223,23 +147,12 @@ function splitByBudget(
     }
     current += word;
   }
-
   flush();
   return pieces;
 }
-
-/**
- * Normalizes text the way BERT's uncased basic tokenizer does (lowercase,
- * accents stripped) while remembering which source index each normalized
- * character came from.
- */
-export function normalizeForTokenAlignment(text: string): {
-  normalized: string;
-  sourceIndex: number[];
-} {
+export function normalizeForTokenAlignment(text) {
   let normalized = "";
-  const sourceIndex: number[] = [];
-
+  const sourceIndex = [];
   for (let index = 0; index < text.length; index += 1) {
     const char = text[index];
     const folded = char.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
@@ -248,83 +161,48 @@ export function normalizeForTokenAlignment(text: string): {
       sourceIndex.push(index);
     }
   }
-
   return { normalized, sourceIndex };
 }
-
-/**
- * Recovers character offsets for pipeline tokens by walking them through the
- * normalized source text in order. Tokens that cannot be located (for
- * example pieces of an [UNK] word) are skipped rather than guessed.
- */
-export function alignTokensToText(
-  text: string,
-  tokens: LocalNerToken[],
-): AlignedToken[] {
+export function alignTokensToText(text, tokens) {
   const { normalized, sourceIndex } = normalizeForTokenAlignment(text);
-  const aligned: AlignedToken[] = [];
+  const aligned = [];
   let cursor = 0;
-
   for (const token of tokens) {
     const piece = tokenPiece(token.word);
     if (!piece) continue;
-
     const position = normalized.indexOf(piece, cursor);
     if (position < 0) continue;
-
     const start = sourceIndex[position];
     const end = sourceIndex[position + piece.length - 1] + 1;
     cursor = position + piece.length;
     aligned.push({ ...token, start, end });
   }
-
   return aligned;
 }
-
-function tokenPiece(word: string): string | null {
+function tokenPiece(word) {
   const trimmed = word.trim();
   if (!trimmed || trimmed === "[UNK]") return null;
   const piece = trimmed.startsWith("##") ? trimmed.slice(2) : trimmed;
   return piece.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
 }
-
-/**
- * Groups BIO-tagged tokens into entity spans. A group continues only through
- * consecutive tokens with an I- tag of the same type; anything else starts a
- * new group, matching the "simple" aggregation strategy.
- */
-export function groupLocalNerTokens(
-  text: string,
-  tokens: LocalNerToken[],
-  offset: number = 0,
-): LocalNerSpan[] {
+export function groupLocalNerTokens(text, tokens, offset = 0) {
   const aligned = alignTokensToText(text, tokens);
-  const groups: Array<{
-    tag: string;
-    start: number;
-    end: number;
-    scores: number[];
-    lastIndex: number;
-  }> = [];
-
+  const groups = [];
   for (const token of aligned) {
     const [prefix, tag] = splitBioLabel(token.entity);
     if (tag === "O") continue;
-
     const open = groups[groups.length - 1];
     const continues =
       open !== undefined &&
       open.tag === tag &&
       prefix !== "B" &&
       token.index === open.lastIndex + 1;
-
     if (continues) {
       open.end = token.end;
       open.scores.push(token.score);
       open.lastIndex = token.index;
       continue;
     }
-
     groups.push({
       tag,
       start: token.start,
@@ -333,16 +211,12 @@ export function groupLocalNerTokens(
       lastIndex: token.index,
     });
   }
-
-  const spans: LocalNerSpan[] = [];
-
+  const spans = [];
   for (const group of groups) {
     const type = mapLocalNerLabel(group.tag);
     if (!type) continue;
-
     const trimmed = trimSpan(text, group.start, group.end);
     if (!trimmed) continue;
-
     const value = text.slice(trimmed.start, trimmed.end);
     if (!isPlausibleEntityValue(value)) continue;
     if (
@@ -352,13 +226,11 @@ export function groupLocalNerTokens(
       continue;
     }
     if (!matchesTypeShape(type, value)) continue;
-
     const score =
       group.scores.reduce((total, item) => total + item, 0) /
       group.scores.length;
     const confidence = confidenceForScore(score);
     if (!confidence) continue;
-
     spans.push({
       type,
       start: offset + trimmed.start,
@@ -368,37 +240,19 @@ export function groupLocalNerTokens(
       label: group.tag,
     });
   }
-
   return joinAdjacentNameSpans(spans, text, offset).map((span) =>
     capUncasedFreeText(span, text, offset),
   );
 }
-
-const JOINABLE_TYPES = new Set<RedactionType>([
-  "PERSON_NAME",
-  "ORGANIZATION",
-  "LOCATION",
-]);
-
-/**
- * The model sometimes restarts an entity mid-name ("Daniel" B-PERSON,
- * "Okafor" B-PERSON). Two spans of the same free-text type separated only by
- * a single space are one identifier, so they are joined.
- */
-function joinAdjacentNameSpans(
-  spans: LocalNerSpan[],
-  text: string,
-  offset: number,
-): LocalNerSpan[] {
-  const joined: LocalNerSpan[] = [];
-
+const JOINABLE_TYPES = new Set(["PERSON_NAME", "ORGANIZATION", "LOCATION"]);
+function joinAdjacentNameSpans(spans, text, offset) {
+  const joined = [];
   for (const span of spans) {
     const previous = joined[joined.length - 1];
     const gap =
       previous !== undefined
         ? text.slice(previous.end - offset, span.start - offset)
         : null;
-
     if (
       previous !== undefined &&
       previous.type === span.type &&
@@ -418,20 +272,11 @@ function joinAdjacentNameSpans(
       };
       continue;
     }
-
     joined.push(span);
   }
-
   return joined;
 }
-
-/**
- * A name, organisation or place that starts or ends mid-word is a subword
- * fragment the model labelled on its own (the "ku" of "haiku"). Secrets
- * are not checked: part of a key is still worth hiding. Only cased scripts
- * are checked, since CJK text has no spaces between words.
- */
-function cutsThroughWord(text: string, start: number, end: number): boolean {
+function cutsThroughWord(text, start, end) {
   const wordChar = /[\p{Lu}\p{Ll}\p{N}]/u;
   return (
     (start > 0 &&
@@ -442,20 +287,7 @@ function cutsThroughWord(text: string, start: number, end: number): boolean {
       wordChar.test(text[end]))
   );
 }
-
-/**
- * The model tags ordinary lowercase words as names ("Reply with one word:
- * pong" scores 0.93 PERSON). Written names, organisations and places are
- * nearly always capitalised, so a single all-lowercase word is held at
- * medium: strict mode still redacts it, standard mode leaves it alone.
- * Multi-word spans ("john smith") keep their score, and scripts without
- * case (CJK, Arabic, ...) are unaffected.
- */
-function capUncasedFreeText(
-  span: LocalNerSpan,
-  text: string,
-  offset: number,
-): LocalNerSpan {
+function capUncasedFreeText(span, text, offset) {
   if (span.confidence !== "high" || !JOINABLE_TYPES.has(span.type)) return span;
   const value = text.slice(span.start - offset, span.end - offset);
   const hasCasedLetter = value.toLowerCase() !== value.toUpperCase();
@@ -464,36 +296,21 @@ function capUncasedFreeText(
   }
   return { ...span, confidence: "medium" };
 }
-
-function splitBioLabel(entity: string): [string, string] {
+function splitBioLabel(entity) {
   if (entity.length > 2 && entity[1] === "-") {
     return [entity[0], entity.slice(2)];
   }
   return ["I", entity];
 }
-
-function trimSpan(
-  text: string,
-  start: number,
-  end: number,
-): { start: number; end: number } | null {
+function trimSpan(text, start, end) {
   let from = start;
   let to = end;
-
   while (from < to && /[\s([{"'“‘]/u.test(text[from])) from += 1;
   while (to > from && /[\s,.;:!?)\]}"'”’]/u.test(text[to - 1])) to -= 1;
-
   return to > from ? { start: from, end: to } : null;
 }
-
-/**
- * Structured types have an obvious shape. The model occasionally labels a
- * neighbouring word (for example "cc" before an email address), and these
- * checks drop such spans without touching the free-text types.
- */
-function matchesTypeShape(type: RedactionType, value: string): boolean {
+function matchesTypeShape(type, value) {
   const digits = value.replace(/\D/g, "").length;
-
   switch (type) {
     case "EMAIL":
       return value.includes("@");
@@ -513,25 +330,15 @@ function matchesTypeShape(type: RedactionType, value: string): boolean {
       return true;
   }
 }
-
-function isPlausibleEntityValue(value: string): boolean {
-  // Single Latin characters and lone punctuation are tokenizer noise, not
-  // identifiers. Single CJK characters are too ambiguous to redact on their
-  // own as well.
+function isPlausibleEntityValue(value) {
   if (value.length < 2) return false;
   return /[\p{L}\p{N}]/u.test(value);
 }
-
-/**
- * Merges spans from several chunks, dropping exact duplicates and keeping
- * the higher-scoring span when two overlap.
- */
-export function mergeLocalNerSpans(spans: LocalNerSpan[]): LocalNerSpan[] {
+export function mergeLocalNerSpans(spans) {
   const ranked = [...spans].sort(
     (a, b) => b.score - a.score || b.end - b.start - (a.end - a.start),
   );
-  const accepted: LocalNerSpan[] = [];
-
+  const accepted = [];
   for (const span of ranked) {
     if (
       accepted.some(
@@ -542,6 +349,5 @@ export function mergeLocalNerSpans(spans: LocalNerSpan[]): LocalNerSpan[] {
     }
     accepted.push(span);
   }
-
   return accepted.sort((a, b) => a.start - b.start || a.end - b.end);
 }

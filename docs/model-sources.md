@@ -15,7 +15,7 @@ No model weights are redistributed in Git. Assets are fetched directly from pinn
 
 ## Shared postprocessing
 
-`src/localNer.ts` is adapted from Offthread source commit `9fbb696d9e7355bbb8f8992493235f95e0ffa60e`, contributed here by the project owner. It now uses standalone types and maps PER/ORG/LOC aliases. Its shared heuristics include WordPiece alignment, score thresholds (minimum 0.45), shape checks, name joining and overlap selection. It may favor or disadvantage particular model tokenization/label schemes. The comparison is therefore of this complete adapter pipeline.
+`src/localNer.js` is adapted from Offthread source commit `9fbb696d9e7355bbb8f8992493235f95e0ffa60e`, contributed here by the project owner. It now uses standalone types and maps PER/ORG/LOC aliases. Its shared heuristics include WordPiece alignment, score thresholds (minimum 0.45), shape checks, name joining and overlap selection. It may favor or disadvantage particular model tokenization/label schemes. The comparison is therefore of this complete adapter pipeline.
 
 All models use the WASM backend with one thread. Offthread source comments record incorrect labels for its quantized PII graph on WebGPU; this experiment does not establish that all WebGPU models are incorrect. No WebGPU results are reported.
 

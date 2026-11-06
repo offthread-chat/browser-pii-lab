@@ -3,7 +3,7 @@ import { chromium, type CDPSession } from "playwright";
 import { execFileSync } from "node:child_process";
 import { cpus, totalmem, platform, release, arch } from "node:os";
 import { readFileSync, writeFileSync } from "node:fs";
-import { MODELS, CONFIG } from "../src/models";
+import { MODELS, CONFIG } from "../src/models.js";
 import { createHash } from "node:crypto";
 const manifest = JSON.parse(readFileSync("data/length-manifest.json", "utf8"));
 type Sample = {

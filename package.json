@@ -5,17 +5,18 @@
   "type": "module",
   "packageManager": "bun@1.3.3",
   "scripts": {
-    "dev": "bun scripts/copy-ort.mjs && vite --host 127.0.0.1",
-    "build": "bun scripts/copy-ort.mjs && tsc --noEmit && vite build",
-    "preview": "vite preview --host 127.0.0.1",
+    "dev": "bun run prepare && bun scripts/serve.ts",
+    "build": "bun scripts/build.mjs",
+    "preview": "bun scripts/serve.ts --dist",
     "test": "bun test",
     "test:browser": "bun build scripts/browser-test.ts --target=node --format=esm --packages=external --outfile .tmp/browser-test.mjs && node .tmp/browser-test.mjs",
     "benchmark": "bun run test:browser --benchmark",
     "data:generate": "bun scripts/generate-length-data.ts",
     "profile": "bun build scripts/profile.ts --target=node --format=esm --packages=external --outfile .tmp/profile.mjs && node .tmp/profile.mjs",
-    "format": "prettier --write src scripts tests vite.config.ts",
+    "format": "prettier --write src scripts tests index.html report.html",
     "report:generate": "bun scripts/render-results.ts",
-    "test:report": "bun build scripts/check-report.ts --target=node --format=esm --packages=external --outfile .tmp/check-report.mjs && node .tmp/check-report.mjs"
+    "test:report": "bun build scripts/check-report.ts --target=node --format=esm --packages=external --outfile .tmp/check-report.mjs && node .tmp/check-report.mjs",
+    "prepare": "bun scripts/prepare.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.3.1"
@@ -23,8 +24,6 @@
   "devDependencies": {
     "@types/bun": "1.4.4",
     "playwright": "1.65.0",
-    "prettier": "3.9.10",
-    "typescript": "7.0.2",
-    "vite": "8.3.6"
+    "prettier": "3.9.10"
   }
 }

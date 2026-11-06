@@ -1,22 +1,8 @@
-import type { Span } from "./types";
-export type ModelResult = {
-  spans: Span[];
-  loadMs: number;
-  inferenceMs: number;
-  initialized: boolean;
-  resources: unknown[];
-  inputTokens: number;
-  chunks: number;
-  firstChunkMs: number | null;
-};
 export class ModelClient {
-  private worker: Worker | null = null;
-  private model = "";
-  private next = 0;
-  private pending: {
-    reject: (e: Error) => void;
-    timer: ReturnType<typeof setTimeout>;
-  } | null = null;
+  worker = null;
+  model = "";
+  next = 0;
+  pending = null;
   cancel() {
     this.worker?.terminate();
     this.worker = null;
@@ -27,19 +13,14 @@ export class ModelClient {
       this.pending = null;
     }
   }
-  async detect(
-    model: string,
-    text: string,
-    progress: (text: string) => void = () => {},
-    profile = false,
-  ): Promise<ModelResult> {
+  async detect(model, text, progress = () => {}, profile = false) {
     if (this.pending) throw new Error("A detection is already running");
     if (model !== this.model) {
       this.cancel();
       this.model = model;
     }
     if (!this.worker)
-      this.worker = new Worker(new URL("./model.worker.ts", import.meta.url), {
+      this.worker = new Worker(new URL("./model.worker.js", import.meta.url), {
         type: "module",
       });
     const worker = this.worker,

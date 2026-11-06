@@ -19,7 +19,7 @@ last_updated: 2026-11-06
 ## Done
 
 - [x] Publish scope, methodology, demo requirements and roadmap — 2026-11-06.
-- [x] Implement a Bun/TypeScript static demo with regex, model and hybrid modes, highlighting, redaction, progress, cancellation and explicit failures — 2026-11-06.
+- [x] Implement a HTML/CSS/JavaScript static demo with regex, model and hybrid modes, highlighting, redaction, progress, cancellation and explicit failures — 2026-11-06.
 - [x] Integrate three pinned browser WASM models and document differing labels and license provenance — 2026-11-06.
 - [x] Add an independent scorer, synthetic quality fixtures, per-case JSON exports and comparison UI — 2026-11-06.
 - [x] Commit deterministic short, ~4K, ~32K and ~100K-token plaintext workloads, generator and checksums — 2026-11-06.
@@ -32,3 +32,5 @@ last_updated: 2026-11-06
 ## Deferred
 
 Public SDK compatibility promises, a general model leaderboard, framework adapters, CMS, comments and a bulk SEO article program.
+
+- [x] Replace Vite and browser TypeScript with plain HTML/CSS/JavaScript and copy-only static packaging — 2026-11-06.

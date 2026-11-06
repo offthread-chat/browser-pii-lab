@@ -1,5 +1,5 @@
 import { AutoTokenizer } from "@huggingface/transformers";
-import { MODELS } from "../src/models";
+import { MODELS } from "../src/models.js";
 import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 const ref = MODELS[0];

@@ -1,12 +1,12 @@
 import { test, expect } from "bun:test";
-import { score, aggregate } from "../src/scoring";
-import { regexDetect, hybrid, redact } from "../src/detection";
+import { score, aggregate } from "../src/scoring.js";
+import { regexDetect, hybrid, redact } from "../src/detection.js";
 import {
   alignTokensToText,
   chunkTextForLocalNer,
   groupLocalNerTokens,
-} from "../src/localNer";
-import { CORPUS } from "../src/corpus";
+} from "../src/localNer.js";
+import { CORPUS } from "../src/corpus.js";
 const g = { start: 2, end: 5, type: "PERSON_NAME" };
 test("duplicate predictions cannot earn multiple true positives", () => {
   const s = score("x Amy", [g], [g, g]);
@@ -104,7 +104,7 @@ test("corpus IDs and spans valid and evaluation count matches UI", () => {
     expect(score(c.text, c.entities, c.entities).fn).toBe(0);
 });
 
-import { median, p95, summarize } from "../src/statistics";
+import { median, p95, summarize } from "../src/statistics.js";
 test("statistics do not invent p95 for low sample counts", () => {
   expect(median([4, 1, 2, 3])).toBe(2.5);
   expect(p95([1, 2, 3])).toBeNull();

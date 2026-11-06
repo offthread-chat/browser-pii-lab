@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { summarize, type ProfileRun } from "../src/statistics";
+import { summarize, type ProfileRun } from "../src/statistics.js";
 const data = JSON.parse(readFileSync("public/measurements.json", "utf8"));
 const quality = JSON.parse(readFileSync("results/chromium-smoke.json", "utf8"));
 const sizes = ["short", "4k", "32k", "100k"];

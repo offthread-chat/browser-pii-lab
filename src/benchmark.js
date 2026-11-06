@@ -1,12 +1,10 @@
-import { CORPUS, CORPUS_INFO } from "./corpus";
-import { CONFIG, MODELS } from "./models";
-import { regexDetect, hybrid } from "./detection";
-import { aggregate, score } from "./scoring";
-import { ModelClient } from "./client";
-import type { Mode, Span } from "./types";
-declare const __COMMIT__: string;
-declare const __LOCK_HASH__: string;
-export const hash = async (value: unknown) =>
+import { commit, lockHash } from "./build-info.js";
+import { CORPUS, CORPUS_INFO } from "./corpus.js";
+import { CONFIG, MODELS } from "./models.js";
+import { regexDetect, hybrid } from "./detection.js";
+import { aggregate, score } from "./scoring.js";
+import { ModelClient } from "./client.js";
+export const hash = async (value) =>
   Array.from(
     new Uint8Array(
       await crypto.subtle.digest(
@@ -18,31 +16,16 @@ export const hash = async (value: unknown) =>
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 export async function benchmark(
-  client: ModelClient,
-  keys: string[],
-  onProgress: (s: string) => void,
-  signal: AbortSignal,
-  split: "development" | "evaluation" = "evaluation",
+  client,
+  keys,
+  onProgress,
+  signal,
+  split = "evaluation",
 ) {
   const cases = CORPUS.filter((c) => c.split === split),
-    rows: {
-      id: string;
-      language: string;
-      config: string;
-      spans: Span[];
-      error: string | null;
-      ms: number;
-      counts: ReturnType<typeof score>;
-      common: ReturnType<typeof score>;
-    }[] = [];
-  const loads: unknown[] = [];
-  const record = (
-    c: (typeof cases)[number],
-    config: string,
-    spans: Span[],
-    ms: number,
-    error: string | null = null,
-  ) =>
+    rows = [];
+  const loads = [];
+  const record = (c, config, spans, ms, error = null) =>
     rows.push({
       id: c.id,
       language: c.language,
@@ -65,7 +48,7 @@ export async function benchmark(
   }
   for (const key of keys) {
     client.cancel();
-    let modelError: string | null = null;
+    let modelError = null;
     for (const c of cases) {
       if (signal.aborted) throw new Error("Benchmark cancelled");
       if (modelError) {
@@ -127,7 +110,7 @@ export async function benchmark(
           type,
           aggregate(
             r.map((x) => {
-              const c = cases.find((c) => c.id === x.id)!;
+              const c = cases.find((c) => c.id === x.id);
               return score(
                 c.text,
                 c.entities.filter((e) => e.type === type),
@@ -154,8 +137,8 @@ export async function benchmark(
     createdUTC: new Date().toISOString(),
     createdLocal: new Date().toString(),
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    commit: __COMMIT__,
-    lockHash: __LOCK_HASH__,
+    commit: commit,
+    lockHash: lockHash,
     corpus: CORPUS_INFO,
     split,
     corpusHash: await hash(CORPUS),

@@ -1,42 +1,30 @@
-import {
-  env,
-  pipeline,
-  type TokenClassificationPipeline,
-} from "@huggingface/transformers";
-import { modelFor } from "./models";
+import { env, pipeline } from "../public/vendor/transformers.min.js";
+import { modelFor } from "./models.js";
 import {
   chunkTextForLocalNer,
   groupLocalNerTokens,
   mergeLocalNerSpans,
-  type LocalNerToken,
-} from "./localNer";
-import { MAX_CHARS } from "./types";
+} from "./localNer.js";
+import { MAX_CHARS } from "./types.js";
 env.allowLocalModels = false;
-const wasm = env.backends.onnx.wasm!;
+const wasm = env.backends.onnx.wasm;
 wasm.numThreads = 1;
 const version = env.backends.onnx.versions?.web;
 const suffix = /Version\/(\d+).*Safari/.exec(navigator.userAgent);
 const variant =
   suffix && Number(suffix[1]) < 26 && !("gpu" in navigator) ? "" : ".asyncify";
-const base = new URL(/* @vite-ignore */ "../", import.meta.url).href;
+const base = new URL("../", import.meta.url).href;
 wasm.wasmPaths = {
-  mjs: `${base}ort/${version}/ort-wasm-simd-threaded${variant}.mjs`,
-  wasm: `${base}ort/${version}/ort-wasm-simd-threaded${variant}.wasm`,
+  mjs: `${base}public/ort/${version}/ort-wasm-simd-threaded${variant}.mjs`,
+  wasm: `${base}public/ort/${version}/ort-wasm-simd-threaded${variant}.wasm`,
 };
-let classifier: TokenClassificationPipeline | undefined;
-self.onmessage = async (
-  e: MessageEvent<{
-    id: number;
-    model: string;
-    text: string;
-    profile?: boolean;
-  }>,
-) => {
+let classifier;
+self.onmessage = async (e) => {
   const { id, model, text, profile } = e.data;
   try {
-    if (text.length > (profile ? 2_000_000 : MAX_CHARS))
+    if (text.length > (profile ? 2000000 : MAX_CHARS))
       throw new Error(
-        `Input exceeds ${profile ? 2_000_000 : MAX_CHARS} UTF-16 units; input was not truncated.`,
+        `Input exceeds ${profile ? 2000000 : MAX_CHARS} UTF-16 units; input was not truncated.`,
       );
     const m = modelFor(model),
       start = performance.now();
@@ -63,7 +51,7 @@ self.onmessage = async (
       spans = [];
     let inputTokens = 0,
       chunks = 0,
-      firstChunkMs: number | null = null;
+      firstChunkMs = null;
     for (const chunk of chunkTextForLocalNer(text)) {
       const count = classifier.tokenizer(chunk.text, {
         truncation: false,
@@ -76,9 +64,7 @@ self.onmessage = async (
       inputTokens += count;
       chunks++;
       const output = await classifier(chunk.text, { ignore_labels: [] });
-      const tokens = (
-        Array.isArray(output[0]) ? output[0] : output
-      ) as LocalNerToken[];
+      const tokens = Array.isArray(output[0]) ? output[0] : output;
       spans.push(...groupLocalNerTokens(chunk.text, tokens, chunk.start));
       if (firstChunkMs === null) firstChunkMs = performance.now() - start;
       self.postMessage({ id, progress: `Processed chunk ${chunks}` });
@@ -94,7 +80,7 @@ self.onmessage = async (
         chunks,
         firstChunkMs,
         resources: performance.getEntriesByType("resource").map((r) => {
-          const x = r as PerformanceResourceTiming;
+          const x = r;
           return {
             url: x.name.split("?")[0],
             duration: x.duration,

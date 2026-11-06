@@ -1,11 +1,6 @@
-import { intervals } from "./detection";
-import { validateSpans, type Span } from "./types";
-export function score(
-  text: string,
-  gold: Span[],
-  predicted: Span[],
-  failed = false,
-) {
+import { intervals } from "./detection.js";
+import { validateSpans } from "./types.js";
+export function score(text, gold, predicted, failed = false) {
   validateSpans(text, gold);
   validateSpans(text, predicted);
   const remaining = new Set(gold.map((_, i) => i));
@@ -50,12 +45,11 @@ export function score(
     cases: 1,
   };
 }
-export type Counts = ReturnType<typeof score>;
-export function aggregate(rows: Counts[]) {
+export function aggregate(rows) {
   const total = score("", [], []);
-  for (const k of Object.keys(total) as (keyof Counts)[])
+  for (const k of Object.keys(total))
     total[k] = rows.reduce((a, r) => a + r[k], 0);
-  const ratio = (a: number, b: number) => (b ? a / b : null);
+  const ratio = (a, b) => (b ? a / b : null);
   return {
     ...total,
     precision: ratio(total.tp, total.tp + total.fp),

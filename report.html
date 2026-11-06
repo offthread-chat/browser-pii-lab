@@ -4,9 +4,113 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Measured results — Browser PII Lab</title>
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
-    <div id="report"></div>
-    <script type="module" src="/src/report.ts"></script>
+    <div id="report">
+      <header>
+        <a href="./">← BROWSER PII LAB</a><span>MEASURED IN CHROME / WASM</span
+        ><a href="https://github.com/offthread-chat/browser-pii-lab"
+          >SOURCE ↗</a
+        >
+      </header>
+      <main>
+        <div class="eyebrow">MEASUREMENTS, WITH LIMITS</div>
+        <h1>Small models.<br /><em>Longer inputs.</em></h1>
+        <p class="intro">
+          Explore latency, input throughput, CPU and memory across the same
+          synthetic workloads. These are recorded results, not a live test of
+          your device.
+        </p>
+        <div id="metadata" class="notice">Loading committed measurements…</div>
+        <section>
+          <div class="section-head">
+            <h2><span>01</span> Compare by input length</h2>
+          </div>
+          <div class="controls">
+            <label
+              >Input workload<select id="length">
+                <option value="short">Short · about 36 reference tokens</option>
+                <option value="4k">About 4K reference tokens</option>
+                <option value="32k">About 32K reference tokens</option>
+                <option value="100k" selected>
+                  About 100K reference tokens
+                </option>
+              </select></label
+            ><label
+              >Metric<select id="metric">
+                <option value="medianMs">
+                  Complete-result latency · milliseconds ↓
+                </option>
+                <option value="inputTokensPerSecond">
+                  Input tokens per second ↑
+                </option>
+                <option value="cpuPercent">Chrome CPU · % of one core</option>
+                <option value="peakRssMiB">Chrome peak RSS sum · MiB</option>
+                <option value="firstChunkMs">
+                  First chunk completion · milliseconds ↓
+                </option>
+              </select></label
+            >
+          </div>
+          <div id="bars" style="margin: 28px 0"></div>
+          <div id="details" style="overflow-x: auto"></div>
+          <p class="muted">
+            Latency is median complete-request time. Input tokens include
+            special tokens repeated at chunk boundaries. First chunk completion
+            is not a streamed token or an emitted partial result. p95 is shown
+            only with at least 20 runs; 100K has one run per model.
+          </p>
+        </section>
+        <section>
+          <h2><span>02</span> Memory over the longest run</h2>
+          <p class="muted">
+            OS RSS summed across the isolated Chrome processes, sampled about
+            every 250 ms. Includes browser/runtime overhead and duplicated
+            shared pages; not model-exclusive memory. Sizes run in increasing
+            order without resetting the worker, so GC and earlier allocations
+            affect later baselines. Lines have different durations.
+          </p>
+          <div id="memory"></div>
+        </section>
+        <section>
+          <h2><span>03</span> First result from a fresh browser</h2>
+          <p>
+            Includes weight download, initialization and detection of the short
+            workload. Fresh browser context caches were empty, but
+            network/CDN/OS caches were not controlled. These single observations
+            are not a cold-start ranking.
+          </p>
+          <div id="cold" style="overflow-x: auto"></div>
+        </section>
+        <section>
+          <h2><span>04</span> Read the evidence</h2>
+          <p>
+            All inputs repeat one synthetic English template. Long inputs are
+            split into many BERT-sized chunks; none of these models has a 100K
+            context window. Resource polling adds overhead. Other apps, thermal
+            state and model execution order can affect results. Short-request
+            CPU includes a larger fraction of sampling overhead. Memory is not
+            reset between lengths.
+          </p>
+          <p>
+            <a href="./public/measurements.json" download
+              >Download raw measurements JSON</a
+            >
+            ·
+            <a
+              href="https://github.com/offthread-chat/browser-pii-lab/tree/main/data"
+              >Input files + checksums</a
+            >
+            ·
+            <a
+              href="https://github.com/offthread-chat/browser-pii-lab/tree/main/results"
+              >Quality results + methodology</a
+            >
+          </p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./src/report.js"></script>
   </body>
 </html>

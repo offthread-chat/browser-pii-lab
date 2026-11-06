@@ -22,3 +22,5 @@ The host-side profiler additionally caps each request at 20 minutes and each Dev
 A browser quality benchmark stops attempting a model after its first detection/load error in that run. Remaining cases are recorded as skipped failures, rather than repeatedly downloading weights. The user can explicitly start a new run to retry. This avoids up to sixteen repeated download attempts per model on an unavailable network.
 
 The committed resource report payload is approximately 8.3 MiB of uncompressed JSON, fetched only when opening the results page. Static host compression/caching and a bandwidth budget still need to be configured before public deployment. Model binaries and generated ONNX Runtime assets are excluded from Git.
+
+The plain-JavaScript site copies the published Transformers.js browser bundle (about 0.6 MB uncompressed) into `public/vendor/`; it loads only inside the model worker. This generated dependency is excluded from Git. Preparing or packaging the site does not download weights or invoke a paid service.

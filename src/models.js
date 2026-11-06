@@ -6,7 +6,7 @@ export const MODELS = [
     revision: "f8c27a85c51c0168f07b9dcf00265bf0a4097939",
     sizeMB: 27,
     scope: "PII-specific; Offthread model",
-    dtype: "fp32" as const,
+    dtype: "fp32",
     subfolder: "",
     file: "model.quant",
   },
@@ -17,7 +17,7 @@ export const MODELS = [
     revision: "8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa",
     sizeMB: 109,
     scope: "General NER: person, organization, location; MISC excluded",
-    dtype: "q8" as const,
+    dtype: "q8",
     subfolder: "onnx",
     file: "model",
   },
@@ -29,12 +29,12 @@ export const MODELS = [
     sizeMB: 135,
     scope:
       "Multilingual NER: person, organization, location; Chinese is an exploratory slice",
-    dtype: "q8" as const,
+    dtype: "q8",
     subfolder: "onnx",
     file: "model",
   },
 ];
-export function modelFor(key: string) {
+export function modelFor(key) {
   const m = MODELS.find((m) => m.key === key);
   if (!m) throw new Error("Unknown model");
   return m;

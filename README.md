@@ -18,7 +18,7 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
-Open the localhost URL printed by Vite. Regex runs without downloading a model. Selecting model or hybrid mode and clicking **Inspect text** starts the selected model download. **Compare all models** runs the same synthetic evaluation cases through all configurations. **Download results JSON** exports benchmark evidence, not your custom input.
+Open the localhost URL printed by the static server. Regex runs without downloading a model. Selecting model or hybrid mode and clicking **Inspect text** starts the selected model download. **Compare all models** runs the same synthetic evaluation cases through all configurations. **Download results JSON** exports benchmark evidence, not your custom input.
 
 ```sh
 bun test
@@ -31,6 +31,8 @@ bun run benchmark
 
 The last command runs browser checks and writes `results/chromium-smoke.json`. It downloads roughly 271 MB of model weights plus tokenizers/runtime on first use. Browser automation runs actual Chrome WASM inference, not Node CPU inference. It uses an isolated temporary Chrome profile, not your signed-in browser profile.
 
+The pages use plain HTML, CSS and native JavaScript modules, with no Vite, framework or application compilation. `bun run prepare` copies the published Transformers.js browser bundle and ONNX Runtime assets into `public/` and records provenance. After preparation, any static HTTP server can serve the repository root. `bun run build` only copies these files into `dist/` for hosting. Serve over HTTP (localhost) or HTTPS; opening HTML via `file://` does not support this worker/module setup. Benchmark automation remains in TypeScript and runs with Bun/Node.
+
 ## Models
 
 | Model | Approximate quantized weights | Purpose |
@@ -39,7 +41,7 @@ The last command runs browser checks and writes `results/chromium-smoke.json`. I
 | [Xenova BERT base NER](https://huggingface.co/Xenova/bert-base-NER) | 109 MB | General person, organization, location NER |
 | [Xenova multilingual DistilBERT NER](https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl) | 135 MB | Multilingual person, organization, location NER |
 
-Model revisions, filenames and quantization are pinned in `src/models.ts`. General NER models do not natively cover the full PII task. Reports separate full-task scores from shared person/organization/location scores. All use the same Offthread-derived WordPiece alignment and postprocessing; this compares these **pipelines**, not raw model quality in isolation. The regex baseline is deliberately limited to emails, North American phone formatting, and IPv4; it is not Offthread's full rule engine.
+Model revisions, filenames and quantization are pinned in `src/models.js`. General NER models do not natively cover the full PII task. Reports separate full-task scores from shared person/organization/location scores. All use the same Offthread-derived WordPiece alignment and postprocessing; this compares these **pipelines**, not raw model quality in isolation. The regex baseline is deliberately limited to emails, North American phone formatting, and IPv4; it is not Offthread's full rule engine.
 
 See [model sources and licenses](docs/model-sources.md) and the [measured Chromium smoke report](results/README.md).
 
@@ -62,11 +64,11 @@ Desktop Chrome was tested. A narrow viewport check is not a real mobile device t
 
 ## Project map
 
-- `src/main.ts`, `src/style.css`: static demo and results UI.
-- `src/model.worker.ts`, `src/client.ts`: WASM inference, worker lifetime and cancellation.
-- `src/localNer.ts`: adapted Offthread token alignment and postprocessing.
-- `src/detection.ts`, `src/scoring.ts`: regex, redaction and independent metrics.
-- `src/corpus.ts`, `src/benchmark.ts`: fixtures and reproducible browser run artifacts.
+- `src/main.js`, `src/style.css`: static demo and results UI.
+- `src/model.worker.js`, `src/client.js`: WASM inference, worker lifetime and cancellation.
+- `src/localNer.js`: adapted Offthread token alignment and postprocessing.
+- `src/detection.js`, `src/scoring.js`: regex, redaction and independent metrics.
+- `src/corpus.js`, `src/benchmark.js`: fixtures and reproducible browser run artifacts.
 - [Methodology](docs/benchmark-methodology.md), [demo behavior](docs/demo-spec.md), [cost controls](docs/cost-controls.md), [roadmap](TODO.md).
 
 Repository-authored materials are [MIT licensed](LICENSE). Model weights and dependencies retain their own licenses; weights are not committed. Contact: contact@offthread.chat.

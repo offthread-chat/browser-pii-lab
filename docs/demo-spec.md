@@ -17,7 +17,7 @@ Status: v0.1 implemented locally and tested in desktop Chrome. Not publicly depl
 
 ## Architecture proposal
 
-Use TypeScript and Bun tooling with a static browser application, a model Web Worker, and a separate evaluation harness using the same detector adapters. Keep detection and redaction pure where possible. A detector returns typed UTF-16 spans and provenance; benchmark scoring operates independently of the implementation.
+Use plain HTML, CSS and native JavaScript modules for the browser application, with Bun/TypeScript for development tools, a model Web Worker, and a separate evaluation harness using the same detector adapters. Keep detection and redaction pure where possible. A detector returns typed UTF-16 spans and provenance; benchmark scoring operates independently of the implementation.
 
 Reuse selected Offthread logic only after reviewing dependencies, licenses, and app-specific assumptions. Do not copy the private application's environment, operational docs, telemetry, credentials, or unrelated chat code into this repository.
 

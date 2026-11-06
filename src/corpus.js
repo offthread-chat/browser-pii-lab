@@ -1,13 +1,5 @@
-import type { Case, Span } from "./types";
-// Synthetic fixtures authored for this project. Not a representative or blind test set.
-function item(
-  id: string,
-  language: string,
-  split: Case["split"],
-  text: string,
-  labels: [string, string][],
-): Case {
-  const entities: Span[] = [];
+function item(id, language, split, text, labels) {
+  const entities = [];
   for (const [value, type] of labels) {
     let cursor = 0;
     while (true) {
@@ -25,7 +17,7 @@ function item(
     entities: entities.sort((a, b) => a.start - b.start),
   };
 }
-export const CORPUS: Case[] = [
+export const CORPUS = [
   item(
     "dev-email",
     "en",
@@ -96,7 +88,7 @@ export const CORPUS: Case[] = [
     "eval-emoji",
     "mixed",
     "evaluation",
-    "🧪 测试 contact: ivy@example.com",
+    "\uD83E\uDDEA 测试 contact: ivy@example.com",
     [["ivy@example.com", "EMAIL"]],
   ),
   item(

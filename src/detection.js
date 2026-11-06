@@ -1,6 +1,6 @@
-import { validateSpans, type Span } from "./types";
-export function regexDetect(text: string): Span[] {
-  const rules: [string, RegExp][] = [
+import { validateSpans } from "./types.js";
+export function regexDetect(text) {
+  const rules = [
     ["EMAIL", /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi],
     ["PHONE", /(?<!\w)(?:\+1[ -]?)?\(?\d{3}\)?[ -]\d{3}[ -]\d{4}(?!\w)/g],
     ["IP_ADDRESS", /\b(?:\d{1,3}\.){3}\d{1,3}\b/g],
@@ -18,8 +18,8 @@ export function regexDetect(text: string): Span[] {
       })),
   );
 }
-export function hybrid(regex: Span[], model: Span[]): Span[] {
-  const seen = new Set<string>();
+export function hybrid(regex, model) {
+  const seen = new Set();
   return [...regex, ...model]
     .filter((s) => {
       const key = `${s.start}:${s.end}:${s.type}`;
@@ -32,8 +32,8 @@ export function hybrid(regex: Span[], model: Span[]): Span[] {
         a.start - b.start || a.end - b.end || a.type.localeCompare(b.type),
     );
 }
-export function intervals(spans: Span[]) {
-  const out: { start: number; end: number }[] = [];
+export function intervals(spans) {
+  const out = [];
   for (const s of [...spans].sort(
     (a, b) => a.start - b.start || a.end - b.end,
   )) {
@@ -43,7 +43,7 @@ export function intervals(spans: Span[]) {
   }
   return out;
 }
-export function redact(text: string, spans: Span[]) {
+export function redact(text, spans) {
   validateSpans(text, spans);
   let out = "",
     cursor = 0;

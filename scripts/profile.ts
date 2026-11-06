@@ -1,3 +1,4 @@
+import { deadline } from "./deadline";
 import { chromium, type CDPSession } from "playwright";
 import { execFileSync } from "node:child_process";
 import { cpus, totalmem, platform, release, arch } from "node:os";
@@ -12,7 +13,20 @@ type Sample = {
   error?: string;
 };
 async function snapshot(cdp: CDPSession, started: number): Promise<Sample> {
-  const { processInfo } = await cdp.send("SystemInfo.getProcessInfo");
+  let processInfo: any[];
+  try {
+    ({ processInfo } = await deadline(
+      cdp.send("SystemInfo.getProcessInfo"),
+      5000,
+    ));
+  } catch (e) {
+    return {
+      elapsedMs: performance.now() - started,
+      rssMiB: null,
+      processes: [],
+      error: String(e),
+    };
+  }
   const processes = processInfo.map((p: any) => ({
     id: p.id,
     type: p.type,
@@ -46,6 +60,10 @@ async function measured<T>(cdp: CDPSession, fn: () => Promise<T>) {
   const start = performance.now(),
     samples: Sample[] = [await snapshot(cdp, start)];
   let stop = false;
+  let failWatch: (e: Error) => void = () => {};
+  const watchdog = new Promise<never>((_, reject) => {
+    failWatch = reject;
+  });
   let wake: (() => void) | undefined;
   const loop = (async () => {
     while (!stop) {
@@ -56,13 +74,25 @@ async function measured<T>(cdp: CDPSession, fn: () => Promise<T>) {
           resolve();
         };
       });
-      if (!stop) samples.push(await snapshot(cdp, start));
+      if (!stop) {
+        const sample = await snapshot(cdp, start);
+        samples.push(sample);
+        if (
+          sample.error ||
+          !sample.processes.some((p) => p.type === "renderer")
+        )
+          failWatch(
+            new Error(
+              sample.error ?? "Chrome renderer exited during measurement",
+            ),
+          );
+      }
     }
   })();
   let value: T | undefined,
     error: string | null = null;
   try {
-    value = await fn();
+    value = await deadline(Promise.race([fn(), watchdog]), 1_200_000);
   } catch (e) {
     error = String(e);
   }
@@ -103,7 +133,7 @@ async function measured<T>(cdp: CDPSession, fn: () => Promise<T>) {
     samples,
   };
 }
-const report: any = {
+let report: any = {
   schemaVersion: 1,
   createdUTC: new Date().toISOString(),
   createdLocal: new Date().toString(),
@@ -141,7 +171,51 @@ const report: any = {
   },
   runs: [],
 };
+const resume = process.argv.includes("--resume");
+if (resume) {
+  const previous = JSON.parse(readFileSync("public/measurements.json", "utf8"));
+  if (
+    previous.lockHash !== report.lockHash ||
+    JSON.stringify(previous.config) !== JSON.stringify(report.config) ||
+    JSON.stringify(previous.models) !== JSON.stringify(report.models) ||
+    JSON.stringify(previous.corpus) !== JSON.stringify(report.corpus)
+  )
+    throw new Error("Cannot resume with changed dependencies or inputs");
+  report = previous;
+}
+report.sessions ??= [{ id: "initial", inferenceCommit: report.commit }];
+const sessionId = "session-" + report.sessions.length;
+report.sessions.push({
+  id: sessionId,
+  createdUTC: new Date().toISOString(),
+  createdLocal: new Date().toString(),
+  inferenceCommit: report.commit,
+  profilerHash: createHash("sha256")
+    .update(readFileSync("scripts/profile.ts"))
+    .digest("hex"),
+  resumed: resume,
+});
+report.interruptions ??= [];
+const countFor = (name: string) =>
+  name === "short" ? 30 : name === "4k" ? 5 : name === "32k" ? 3 : 1;
+const done = (model: string, length: string, trial: number) =>
+  report.runs.some(
+    (r: any) =>
+      r.model === model &&
+      r.phase === "warm" &&
+      r.length === length &&
+      r.trial === trial &&
+      !r.error,
+  );
 for (const model of MODELS) {
+  if (
+    manifest.fixtures.every((f: any) =>
+      Array.from({ length: countFor(f.name) }, (_, i) =>
+        done(model.key, f.name, i),
+      ).every(Boolean),
+    )
+  )
+    continue;
   console.log(`Profiling ${model.key}`);
   const browser = await chromium.launch({ headless: true, channel: "chrome" });
   report.browser = await browser.version();
@@ -163,7 +237,12 @@ for (const model of MODELS) {
     const firstLoad = await measured(cdp, () => detect(short));
     report.runs.push({
       model: model.key,
-      phase: "firstLoad",
+      phase: report.runs.some(
+        (r: any) => r.model === model.key && r.phase === "firstLoad",
+      )
+        ? "restartLoad"
+        : "firstLoad",
+      sessionId,
       length: "short",
       trial: 0,
       ...firstLoad,
@@ -188,10 +267,12 @@ for (const model of MODELS) {
               ? 3
               : 1;
       for (let trial = 0; trial < repetitions; trial++) {
+        if (done(model.key, fixture.name, trial)) continue;
         const run = await measured(cdp, () => detect(text));
         report.runs.push({
           model: model.key,
           phase: "warm",
+          sessionId,
           length: fixture.name,
           trial,
           ...run,
@@ -203,7 +284,12 @@ for (const model of MODELS) {
         console.log(
           `${model.key} ${fixture.name} ${trial + 1}/${repetitions}: ${Math.round(run.wallMs)} ms; ${run.error ?? "ok"}`,
         );
-        if (run.error) break;
+        if (run.error) {
+          console.log(
+            "Failed run saved; stopping so --resume can retry in a fresh browser.",
+          );
+          throw new Error(run.error);
+        }
       }
     }
     await context.close();

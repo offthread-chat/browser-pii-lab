@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "license": "MIT",
+  "synthetic": true,
+  "referenceModel": {
+    "key": "gravitee",
+    "name": "BERT small · PII",
+    "id": "gravitee-io/bert-small-pii-detection",
+    "revision": "f8c27a85c51c0168f07b9dcf00265bf0a4097939",
+    "sizeMB": 27,
+    "scope": "PII-specific; Offthread model",
+    "dtype": "fp32",
+    "subfolder": "",
+    "file": "model.quant"
+  },
+  "referenceCountIncludesSpecialTokens": true,
+  "unit": "Alice Morgan works at Acme Labs in London. Email alice@example.com. ",
+  "note": "Repetitive synthetic throughput workload, not a quality or representative-document benchmark. Same text is used for every model; actual tokenizer counts differ. Long inputs are chunked.",
+  "fixtures": [
+    {
+      "name": "short",
+      "targetTokens": 32,
+      "referenceTokens": 36,
+      "utf16Units": 136,
+      "repetitions": 2,
+      "path": "data/lengths/short.txt",
+      "sha256": "f4f3ed616b09d2d5b05c65db5bf3b5ef56207b3edd2fe5058348598117ffac03"
+    },
+    {
+      "name": "4k",
+      "targetTokens": 4096,
+      "referenceTokens": 4099,
+      "utf16Units": 16388,
+      "repetitions": 241,
+      "path": "data/lengths/4k.txt",
+      "sha256": "f9867cc127d4e656489cc2ad81f6d1848a1b28186793bcc8d4277e087de0f41a"
+    },
+    {
+      "name": "32k",
+      "targetTokens": 32768,
+      "referenceTokens": 32761,
+      "utf16Units": 131036,
+      "repetitions": 1927,
+      "path": "data/lengths/32k.txt",
+      "sha256": "35c973374bf9fd28a2b02be32a8bd57a6d740d872da02c5e5f944000b5e03e7f"
+    },
+    {
+      "name": "100k",
+      "targetTokens": 100000,
+      "referenceTokens": 99996,
+      "utf16Units": 399976,
+      "repetitions": 5882,
+      "path": "data/lengths/100k.txt",
+      "sha256": "74811daab8b00e47d6bd3e7c25493ca02352c836057a48e46d433271aaf0cc29"
+    }
+  ]
+}

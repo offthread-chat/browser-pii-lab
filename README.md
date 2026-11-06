@@ -5,49 +5,68 @@ last_updated: 2026-11-06
 
 # Browser PII Lab
 
-A proposal for a reproducible browser PII detection benchmark and an interactive local-inference demo, initiated by [Offthread](https://offthread.chat).
+Run three small entity-detection models locally in your browser, compare them with regex, and inspect redacted output and reproducible benchmark exports. Built by [Offthread](https://offthread.chat).
 
-**Status: planning repository. There is no runnable demo, benchmark runner, or published score here yet.** The specifications below describe intended behavior, not completed features.
+**Working v0.1:** static demo, three pinned WASM models, regex/model/hybrid modes, synthetic benchmark, independent scorer, JSON exports, and automated tests. No hosted demo has been deployed. This is an engineering experiment, not a production anonymization guarantee or a validated model leaderboard.
 
-## The question
+## Run locally
 
-What does a small browser-local PII model detect beyond regular expressions, what ordinary text does it incorrectly flag, and how much download and waiting time does it cost?
+Requires Bun 1.3.3+ and a modern browser with WebAssembly. No API key is needed.
 
-The first comparison will evaluate three configurations on the same versioned corpus:
+```sh
+bun install --frozen-lockfile
+bun run dev
+```
 
-1. Regex only.
-2. Local model only.
-3. Regex plus local model, with explicit overlap-resolution rules.
+Open the localhost URL printed by Vite. Regex runs without downloading a model. Selecting model or hybrid mode and clicking **Inspect text** starts the selected model download. **Compare all models** runs the same synthetic evaluation cases through all configurations. **Download results JSON** exports benchmark evidence, not your custom input.
 
-## Proposed demo
+```sh
+bun test
+bun run build
+bun run preview --port 4187 --strictPort
+# In another terminal, with Google Chrome installed:
+bun run test:browser
+bun run benchmark
+```
 
-Enter synthetic text, compare detected spans and redacted output, and inspect loading and inference timing. Inference should run in a browser Web Worker using WASM. User-entered text must not be sent to a server or captured by analytics. Model and runtime downloads still require network access and can expose ordinary connection metadata to their hosts.
+The last command runs browser checks and writes `results/chromium-smoke.json`. It downloads roughly 271 MB of model weights plus tokenizers/runtime on first use. Browser automation runs actual Chrome WASM inference, not Node CPU inference. It uses an isolated temporary Chrome profile, not your signed-in browser profile.
 
-The demo will show misses, false positives, unsupported categories, and loading failures. It must not describe detection as guaranteed anonymization.
+## Models
 
-## Starting point
+| Model | Approximate quantized weights | Purpose |
+|---|---:|---|
+| [Gravitee BERT small PII](https://huggingface.co/gravitee-io/bert-small-pii-detection) | 27 MB | PII-specific; model used by Offthread |
+| [Xenova BERT base NER](https://huggingface.co/Xenova/bert-base-NER) | 109 MB | General person, organization, location NER |
+| [Xenova multilingual DistilBERT NER](https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl) | 135 MB | Multilingual person, organization, location NER |
 
-Offthread currently uses `gravitee-io/bert-small-pii-detection` at revision `f8c27a85c51c0168f07b9dcf00265bf0a4097939`, through Transformers.js, with a quantized model file named `model.quant.onnx`. Its configuration labels the model approximately 27 MB; this repository has not independently measured transfer size.
+Model revisions, filenames and quantization are pinned in `src/models.ts`. General NER models do not natively cover the full PII task. Reports separate full-task scores from shared person/organization/location scores. All use the same Offthread-derived WordPiece alignment and postprocessing; this compares these **pipelines**, not raw model quality in isolation. The regex baseline is deliberately limited to emails, North American phone formatting, and IPv4; it is not Offthread's full rule engine.
 
-Offthread's current worker explicitly uses WASM. Its source comments record incorrect labels with this graph on WebGPU; that is an implementation observation, not a claim about all WebGPU models.
+See [model sources and licenses](docs/model-sources.md) and the [measured Chromium smoke report](results/README.md).
 
-The existing application benchmark runs model inference in Node on CPU and checks whether sensitive strings remain in redacted output. Those results must not be presented as this project's browser span-level benchmark.
+## What's measured
 
-## Project documents
+- One-to-one exact span-and-type precision, recall and F1, including duplicate penalties.
+- Sensitive-span coverage, over-redacted UTF-16 units, clean-input changes, and complete-coverage rate.
+- Per-language and per-category breakdowns, individual predictions, failures and provenance.
+- Startup and per-case inference observations. Cache state is unknown; these are **not** controlled cold/warm performance trials.
 
-- [Benchmark methodology](docs/benchmark-methodology.md)
-- [Demo specification](docs/demo-spec.md)
-- [Implementation and publication roadmap](TODO.md)
-- [Contributing](CONTRIBUTING.md)
+The corpus contains 6 development fixtures and 16 evaluation fixtures. Both are small, public, author-generated synthetic sets visible during implementation. They are not independent holdouts, representative language samples, or a basis for statistical superiority claims. Chinese and French cases are exploratory.
 
-## Scope and limits
+## Privacy and limits
 
-Initial implementation target: TypeScript with Bun for package management and development tooling. Browser inference remains browser-based; Bun/Node model results are not substitutes for browser measurements.
+Text inference happens in a Web Worker. No text server, analytics, local chat storage, or paid provider API is used. Model/tokenizer assets load from Hugging Face and its CDN; ordinary connection metadata reaches those services. ONNX Runtime assets are served locally. The browser may cache model assets. Clearing input unloads the worker but does not delete downloaded browser caches.
 
-This project does not provide a chat model, a privacy certification, a general-purpose model leaderboard, or a production SDK. English, Chinese, and mixed-language behavior must be measured separately; no language support is claimed before testing.
+Inputs over 20,000 UTF-16 units are rejected, not silently truncated. Long inputs are chunked, so an entity crossing a chunk boundary can be missed. Unknown WordPieces can also produce alignment misses. Loading failures are displayed without silently substituting regex. Cancel terminates the worker; retry creates a new one. Detection scores are not calibrated probabilities.
 
-## License and contact
+Desktop Chrome was tested. A narrow viewport check is not a real mobile device test. Safari and actual mobile devices remain unverified. Asset-download and inference times depend on hardware, browser and network.
 
-Repository-authored materials are licensed under [MIT](LICENSE). Third-party model weights and datasets retain their own licenses and are not included. Verify pinned upstream licenses and preserve required notices before redistributing any assets.
+## Project map
 
-Questions: contact@offthread.chat. Offthread's product context is available at [offthread.chat](https://offthread.chat); publishing this project does not establish an SEO or ranking benefit.
+- `src/main.ts`, `src/style.css`: static demo and results UI.
+- `src/model.worker.ts`, `src/client.ts`: WASM inference, worker lifetime and cancellation.
+- `src/localNer.ts`: adapted Offthread token alignment and postprocessing.
+- `src/detection.ts`, `src/scoring.ts`: regex, redaction and independent metrics.
+- `src/corpus.ts`, `src/benchmark.ts`: fixtures and reproducible browser run artifacts.
+- [Methodology](docs/benchmark-methodology.md), [demo behavior](docs/demo-spec.md), [cost controls](docs/cost-controls.md), [roadmap](TODO.md).
+
+Repository-authored materials are [MIT licensed](LICENSE). Model weights and dependencies retain their own licenses; weights are not committed. Contact: contact@offthread.chat.

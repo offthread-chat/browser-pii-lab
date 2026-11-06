@@ -7,23 +7,22 @@ last_updated: 2026-11-06
 
 ## Open
 
-- [ ] Audit reusable Offthread detection logic and all third-party licenses; extract only necessary code.
-- [ ] Define category taxonomy, annotation rules, and hybrid type-conflict precedence.
-- [ ] Create a versioned synthetic corpus with separate development and evaluation splits and provenance.
-- [ ] Implement independent span scoring and meaningful tests for duplicates, Unicode, overlaps, partial coverage, empty denominators, and failures.
-- [ ] Implement regex, pinned WASM model, and hybrid detector adapters with TypeScript and Bun tooling.
-- [ ] Build the static interactive demo described in docs/demo-spec.md.
-- [ ] Build a browser evaluation harness and run clean-checkout reproduction checks.
-- [ ] Collect raw quality and cold/cached/warm timing artifacts on documented desktop and mobile environments.
-- [ ] Review limitations, leakage risks, network behavior, accessibility, asset licenses, and hosting cost limits before deployment.
-- [ ] Publish the first measured report, including unfavorable results and failure cases.
-- [ ] Add a minimal Offthread /blog index and technical article after results exist; link naturally to the repo/demo and raw evidence.
-- [ ] Evaluate actual reuse, external citations, referral visits, and product usage; do not equate stars or repository creation with SEO gains.
+- [ ] Expand the synthetic smoke corpus into independently reviewed, versioned evaluation data with template/source-family isolation and clear sampling rationale.
+- [ ] Add controlled repeated cold/cached startup and warmed inference trials; currently timings are observations only.
+- [ ] Verify Safari and actual mobile devices; desktop mobile-size layout is not mobile inference validation.
+- [ ] Investigate token alignment/chunk-boundary limitations and measure postprocessing ablations.
+- [ ] Review model asset redistribution obligations and set hosting bandwidth limits before public deployment.
+- [ ] Publish an Offthread technical blog article with the measured limitations; build only a minimal blog index initially.
+- [ ] Track real reuse, citations and referrals without treating stars as SEO evidence.
 
 ## Done
 
-- [x] Record project scope, proposed methodology, demo requirements, and implementation roadmap — 2026-11-06.
+- [x] Publish project scope, methodology, demo requirements and roadmap — 2026-11-06.
+- [x] Implement a Bun/TypeScript static demo with regex, model and hybrid modes, highlighting, redaction, progress, cancellation and explicit failures — 2026-11-06.
+- [x] Integrate three pinned browser WASM models and document their differing labels and license provenance — 2026-11-06.
+- [x] Add an independent scorer, synthetic development/evaluation fixtures, per-case JSON exports and comparison UI — 2026-11-06.
+- [x] Add meaningful scorer/adapter unit tests and real Chrome browser tests — 2026-11-06.
 
-## Deliberately deferred
+## Deferred
 
-A general model leaderboard, public package/SDK compatibility promises, framework adapters, CMS, comments, and a broad SEO article program. Reconsider after a useful reference implementation and reproducible results exist.
+Public SDK compatibility promises, a general model leaderboard, framework adapters, CMS, comments and a bulk SEO article program.

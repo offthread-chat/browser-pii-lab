@@ -5,7 +5,7 @@ last_updated: 2026-11-06
 
 # Benchmark methodology — proposed v0.1
 
-Status: specification; no measurements have been produced by this repository.
+Status: scorer and browser harness implemented. The committed synthetic smoke results are exploratory; the independent corpus and controlled performance protocol below remain targets, not completed validation.
 
 ## Corpus and splits
 

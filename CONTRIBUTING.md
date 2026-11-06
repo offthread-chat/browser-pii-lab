@@ -5,12 +5,12 @@ last_updated: 2026-11-06
 
 # Contributing
 
-This repository currently contains specifications. Start with the roadmap and discuss changes to scoring or corpus policy before collecting headline results.
+Use TypeScript, Bun and Conventional Commits. Run `bun test` and `bun run build`; for inference/UI changes also run the browser checks documented in README. Keep model inference in the browser for browser results.
 
-Use TypeScript and Bun for new implementation. Keep model inference in the browser for browser results. Use Conventional Commits. Every new or updated Markdown file must include creation and last-updated dates in frontmatter. Preserve original creation dates.
+Every Markdown file needs creation and last-updated dates in frontmatter. Preserve the original creation date. Discuss changes to scoring or corpus policy before collecting headline results. Do not tune against the evaluation fixtures and then claim a blind holdout.
 
-Contribute only synthetic or explicitly licensed examples. Do not post real personal data, secrets, customer prompts, or private application files in issues or pull requests. Reproduction reports should include versions, backend, configuration, corpus checksum, and sanitized failure details.
+Contribute only synthetic or explicitly licensed examples. Do not post genuine personal data, customer prompts, private application files or secrets. Reproduction reports should include backend, pinned model and dependency versions, configuration, corpus checksum and sanitized failure details.
 
-Distinguish measured observations, proposals, and hypotheses. Include negative findings. A detected span is not proof of safe anonymization, and a synthetic corpus is not a population study.
+Distinguish observations, proposals and hypotheses; include unfavorable results. Detection is not proof of safe anonymization. Update cost controls when changing model download size, input/request limits, hosting or paid-provider use.
 
 Contact: contact@offthread.chat.

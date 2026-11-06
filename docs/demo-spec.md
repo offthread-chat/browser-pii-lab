@@ -5,14 +5,14 @@ last_updated: 2026-11-06
 
 # Browser demo specification
 
-Status: proposed; not implemented or deployed.
+Status: v0.1 implemented locally and tested in desktop Chrome. Not publicly deployed. Safari and real mobile verification remain open.
 
 ## User flow
 
 1. Start with a synthetic example and a short explanation of local inference and asset downloads.
 2. Offer regex, local model, and hybrid modes. Load model assets only after an explicit user action; show progress, approximate download information, and errors.
 3. Display detected spans, categories, detector source, and redacted output side by side. Render input as text, never HTML. Model scores are not calibrated probabilities.
-4. Show startup and inference timing with cache/backend context. Clearly identify regex-only fallback; never label it as a successful model run.
+4. Show startup and inference timing with cache/backend context. Display model errors without an automatic regex fallback.
 5. Provide clear/reset and cancellation controls. User text stays in memory and is not automatically persisted or exported. Export of user-entered text requires an explicit action and a warning that the file contains that text.
 
 ## Architecture proposal

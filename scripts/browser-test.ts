@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 const full = process.argv.includes("--benchmark");
 const browser = await chromium.launch({ headless: true, channel: "chrome" });
@@ -94,7 +94,7 @@ try {
   await page.locator("#download").click();
   const download = await downloadPromise;
   await download.saveAs("test-artifacts/ui-export.json");
-  const exported = await Bun.file("test-artifacts/ui-export.json").text();
+  const exported = await readFile("test-artifacts/ui-export.json", "utf8");
   assert.equal(exported.includes(marker), false);
   assert.equal(JSON.parse(exported).summaries.length, 3);
   assert.equal(await page.locator("#summary tbody tr").count(), 3);

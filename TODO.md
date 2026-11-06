@@ -26,3 +26,10 @@ last_updated: 2026-11-06
 ## Deferred
 
 Public SDK compatibility promises, a general model leaderboard, framework adapters, CMS, comments and a bulk SEO article program.
+
+## Length and resource profiling
+
+- [x] Commit deterministic short, ~4K, ~32K and ~100K-token plaintext workloads, generator and checksums — 2026-11-06.
+- [x] Implement local whole-Chrome CPU/RSS sampling and first-result / input-throughput measurements — 2026-11-06.
+- [x] Implement an interactive length/metric report, memory traces and standalone SVG report generator — 2026-11-06.
+- [ ] Broaden the repetitive English scaling workload to varied long documents and languages, with independent annotations; run more 100K repetitions on other hardware.

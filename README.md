@@ -70,3 +70,22 @@ Desktop Chrome was tested. A narrow viewport check is not a real mobile device t
 - [Methodology](docs/benchmark-methodology.md), [demo behavior](docs/demo-spec.md), [cost controls](docs/cost-controls.md), [roadmap](TODO.md).
 
 Repository-authored materials are [MIT licensed](LICENSE). Model weights and dependencies retain their own licenses; weights are not committed. Contact: contact@offthread.chat.
+
+## CPU, memory and long-input visualization
+
+The repository also includes explicit local profiling across short, ~4K, ~32K and ~100K input-token workloads. The files, generator, reference tokenizer counts and checksums are committed under `data/`. Inputs are split into BERT-sized chunks; the models do not have 100K context windows.
+
+```sh
+# With the production preview already running on port 4187:
+bun run profile
+bun run report:generate
+bun run build
+```
+
+Open `/report.html` on the preview server for an interactive metric/length comparison and memory traces. [The results README](results/README.md) includes a standalone SVG and tables; [raw resource samples](public/measurements.json) are also committed. Run the quality benchmark and profiler sequentially, not at the same time.
+
+The profiler runs on macOS/Linux with Google Chrome and `ps`. It measures whole-Chrome CPU and summed process RSS, including browser overhead and potentially double-counted shared memory. It does not pretend to measure model-exclusive memory. The first-result metric is complete classification latency, not generation TTFT; Tokens/s means **input** tokens processed. The 100K tier has one run per model, so no p95 is reported. See [measurement definitions](docs/benchmark-methodology.md).
+
+A complete resource run can take tens of minutes on a laptop. The profiler saves after each request and supports `bun run profile --resume` after an interruption, with source/configuration checks and explicit session metadata. The committed run includes a documented renderer exit and resumed BERT session; no duration was invented for the interrupted request.
+
+Browser automation commands use Node (22+ recommended) for the Playwright driver after compiling it with Bun. This was introduced after an observed automation connection stall; it is not a claim that Bun caused the browser failure. The raw results retain the failed attempt and session boundaries.

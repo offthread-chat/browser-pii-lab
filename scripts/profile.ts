@@ -194,6 +194,7 @@ report.sessions.push({
     .update(readFileSync("scripts/profile.ts"))
     .digest("hex"),
   resumed: resume,
+  driverRuntime: process.version,
 });
 report.interruptions ??= [];
 const countFor = (name: string) =>
@@ -219,11 +220,15 @@ for (const model of MODELS) {
   console.log(`Profiling ${model.key}`);
   const browser = await chromium.launch({ headless: true, channel: "chrome" });
   report.browser = await browser.version();
+  let browserPid: number | undefined;
   try {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("http://127.0.0.1:4187");
     const cdp = await browser.newBrowserCDPSession();
+    browserPid = (await snapshot(cdp, performance.now())).processes.find(
+      (p) => p.type === "browser",
+    )?.id;
     const detect = async (text: string) =>
       page.evaluate(
         async ({ key, text }) => {
@@ -292,9 +297,16 @@ for (const model of MODELS) {
         }
       }
     }
-    await context.close();
+    await deadline(context.close(), 5000);
   } finally {
-    await browser.close();
+    try {
+      await deadline(browser.close(), 5000);
+    } catch {
+      if (browserPid)
+        try {
+          process.kill(browserPid, "SIGTERM");
+        } catch {}
+    }
   }
 }
 report.completedUTC = new Date().toISOString();

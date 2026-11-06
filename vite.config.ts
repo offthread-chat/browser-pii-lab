@@ -5,6 +5,9 @@ import { readFileSync } from "node:fs";
 export default defineConfig({
   base: "./",
   worker: { format: "es" },
+  build: {
+    rollupOptions: { input: { main: "index.html", report: "report.html" } },
+  },
   define: {
     __COMMIT__: JSON.stringify(
       execSync("git rev-parse HEAD").toString().trim(),

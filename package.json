@@ -9,11 +9,13 @@
     "build": "bun scripts/copy-ort.mjs && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "bun test",
-    "test:browser": "bun scripts/browser-test.ts",
-    "benchmark": "bun scripts/browser-test.ts --benchmark",
+    "test:browser": "bun build scripts/browser-test.ts --target=node --format=esm --packages=external --outfile .tmp/browser-test.mjs && node .tmp/browser-test.mjs",
+    "benchmark": "bun run test:browser --benchmark",
     "data:generate": "bun scripts/generate-length-data.ts",
-    "profile": "bun scripts/profile.ts",
-    "format": "prettier --write src scripts tests vite.config.ts"
+    "profile": "bun build scripts/profile.ts --target=node --format=esm --packages=external --outfile .tmp/profile.mjs && node .tmp/profile.mjs",
+    "format": "prettier --write src scripts tests vite.config.ts",
+    "report:generate": "bun scripts/render-results.ts",
+    "test:report": "bun build scripts/check-report.ts --target=node --format=esm --packages=external --outfile .tmp/check-report.mjs && node .tmp/check-report.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.3.1"

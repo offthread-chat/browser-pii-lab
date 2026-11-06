@@ -38,3 +38,7 @@ Pin model and runtime versions. Document model/tokenizer origins and cache behav
 ## Deployment and cost
 
 Choose a static host only when the implementation is ready. No hosting or paid service is provisioned by this planning repository. Before deployment, document asset sizes, cache policy, hosting bandwidth limits/budget, and who pays for downloads. Model hosting may have usage or availability limits even when inference runs locally.
+
+## Results visualization
+
+`report.html` is a separate static page over committed measurements. It offers workload-length and metric selectors, numeric tables with sample counts, RSS time-series plots, first-load observations, and links to raw JSON/input files. It does not run inference or collect telemetry. The report generator also creates a standalone SVG and CSV summaries for analysis outside the browser. The profiler requires a local Chrome/OS connection; the ordinary web page cannot inspect the user's process CPU/RSS directly.

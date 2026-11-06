@@ -103,3 +103,31 @@ test("corpus IDs and spans valid and evaluation count matches UI", () => {
   for (const c of CORPUS)
     expect(score(c.text, c.entities, c.entities).fn).toBe(0);
 });
+
+import { median, p95, summarize } from "../src/statistics";
+test("statistics do not invent p95 for low sample counts", () => {
+  expect(median([4, 1, 2, 3])).toBe(2.5);
+  expect(p95([1, 2, 3])).toBeNull();
+  expect(p95(Array.from({ length: 20 }, (_, i) => i + 1))).toBe(19);
+  expect(summarize([]).medianMs).toBeNull();
+});
+
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+test("committed long-input files match their manifest and preserve chunk offsets", () => {
+  const m = JSON.parse(
+    readFileSync(
+      new URL("../data/length-manifest.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  for (const f of m.fixtures) {
+    const text = readFileSync(new URL("../" + f.path, import.meta.url), "utf8");
+    expect(createHash("sha256").update(text).digest("hex")).toBe(f.sha256);
+    expect(text.length).toBe(f.utf16Units);
+    const chunks = chunkTextForLocalNer(text);
+    expect(chunks.map((c) => c.text).join("")).toBe(text);
+    for (const c of chunks)
+      expect(text.slice(c.start, c.start + c.text.length)).toBe(c.text);
+  }
+});

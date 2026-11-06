@@ -1,0 +1,26 @@
+{
+  "createdUTC": "2026-11-06T15:15:15.462Z",
+  "createdLocal": "Fri Nov 06 2026 23:15:15 GMT+0800 (China Standard Time)",
+  "browser": "156.0.8078.80",
+  "checks": [
+    "no eager model download",
+    "regex redaction",
+    "HTML escaping",
+    "real WASM model",
+    "clear",
+    "length limit",
+    "cancel",
+    "hybrid",
+    "no prompt network leak",
+    "mobile overflow",
+    "no uncaught errors",
+    "benchmark UI and JSON export",
+    "blocked model download surfaces failure",
+    "failed benchmark skips repeated downloads and counts coverage failures"
+  ],
+  "requestOrigins": [
+    "http://127.0.0.1:4187",
+    "https://huggingface.co",
+    "https://us.aws.cdn.hf.co"
+  ]
+}

@@ -20,3 +20,5 @@ last_updated: 2026-11-06
 The host-side profiler additionally caps each request at 20 minutes and each DevTools process-info request at 5 seconds. An error is saved before the run stops; `--resume` skips successful recorded trials and starts a fresh browser for remaining work. A restart changes cache and memory baselines and is recorded as a separate session.
 
 A browser quality benchmark stops attempting a model after its first detection/load error in that run. Remaining cases are recorded as skipped failures, rather than repeatedly downloading weights. The user can explicitly start a new run to retry. This avoids up to sixteen repeated download attempts per model on an unavailable network.
+
+The committed resource report payload is approximately 8.3 MiB of uncompressed JSON, fetched only when opening the results page. Static host compression/caching and a bandwidth budget still need to be configured before public deployment. Model binaries and generated ONNX Runtime assets are excluded from Git.

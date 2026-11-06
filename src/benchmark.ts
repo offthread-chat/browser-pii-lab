@@ -67,8 +67,26 @@ export async function benchmark(
   }
   for (const key of keys) {
     client.cancel();
+    let modelError: string | null = null;
     for (const c of cases) {
       if (signal.aborted) throw new Error("Benchmark cancelled");
+      if (modelError) {
+        record(
+          c,
+          `${key}:model`,
+          [],
+          0,
+          `Skipped after model failure: ${modelError}`,
+        );
+        record(
+          c,
+          `${key}:hybrid`,
+          [],
+          0,
+          `Skipped after model failure: ${modelError}`,
+        );
+        continue;
+      }
       onProgress(`${key} · ${c.id}`);
       const t = performance.now();
       try {
@@ -90,6 +108,7 @@ export async function benchmark(
       } catch (e) {
         if (signal.aborted) throw e;
         const error = e instanceof Error ? e.message : "Failed";
+        modelError = error;
         record(c, `${key}:model`, [], performance.now() - t, error);
         record(c, `${key}:hybrid`, [], performance.now() - t, error);
       }

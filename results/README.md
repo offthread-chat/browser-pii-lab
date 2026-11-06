@@ -34,7 +34,7 @@ CPU 100% means one logical core; this is whole-Chrome CPU, not model-exclusive C
 
 ## Detection quality smoke test
 
-Source commit: `e82290889ae01a7e40c55fecc86a2dfe3db40ccb`. [Raw predictions, provenance and per-category/language scores](chromium-smoke.json). Only 16 public synthetic fixtures; these were visible during implementation and are not an independent holdout. Full-task scores include email/phone/IP; shared scores include only person/organization/location. All adapters share Offthread postprocessing.
+Source commit: `ad7eb56ac14f1f6a31f6be2ae84215ec6219996a`. [Raw predictions, provenance and per-category/language scores](chromium-smoke.json). Only 16 public synthetic fixtures; these were visible during implementation and are not an independent holdout. Full-task scores include email/phone/IP; shared scores include only person/organization/location. All adapters share Offthread postprocessing.
 
 | Configuration | Full precision | Full recall | Full F1 | Shared NER F1 | Failures |
 |---|---:|---:|---:|---:|---:|

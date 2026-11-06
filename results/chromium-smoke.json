@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "createdUTC": "2026-11-06T15:15:14.607Z",
-  "createdLocal": "Fri Nov 06 2026 23:15:14 GMT+0800 (China Standard Time)",
+  "createdUTC": "2026-11-06T15:33:44.890Z",
+  "createdLocal": "Fri Nov 06 2026 23:33:44 GMT+0800 (China Standard Time)",
   "timezone": "Asia/Shanghai",
-  "commit": "e82290889ae01a7e40c55fecc86a2dfe3db40ccb",
-  "lockHash": "2fc11d3070ee16ffe2b592e40b77c6bd7bdde937d7f03314d8582793a5b8dfbd",
+  "commit": "ad7eb56ac14f1f6a31f6be2ae84215ec6219996a",
+  "lockHash": "b06b483fda276c9d9449a8b0554820279f256b95f61488fc8ba55e3237032c2b",
   "corpus": {
     "version": "synthetic-smoke-v1",
     "license": "MIT",
@@ -73,24 +73,24 @@
   "loads": [
     {
       "model": "gravitee",
-      "loadMs": 1654.1999998092651,
+      "loadMs": 2482.5,
       "cacheState": "unknown",
       "resources": [
         {
           "url": "https://huggingface.co/gravitee-io/bert-small-pii-detection/resolve/main/tokenizer_config.json",
-          "duration": 566.1000003814697,
+          "duration": 551,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/gravitee-io/bert-small-pii-detection/resolve/main/onnx/model.onnx",
-          "duration": 312.59999990463257,
+          "duration": 295,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/gravitee-io/bert-small-pii-detection/resolve/main/tokenizer.json",
-          "duration": 630.4000000953674,
+          "duration": 1436.5,
           "transferBytes": null,
           "decodedBytes": null
         }
@@ -98,60 +98,60 @@
     },
     {
       "model": "bert",
-      "loadMs": 22681.099999904633,
+      "loadMs": 25201.5,
       "cacheState": "unknown",
       "resources": [
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/main/config.json",
-          "duration": 653.1000003814697,
+          "duration": 558.5,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/main/tokenizer_config.json",
-          "duration": 613.8000001907349,
+          "duration": 607.9000000953674,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/main/onnx/model_quantized.onnx",
-          "duration": 507.19999980926514,
+          "duration": 525.6000003814697,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/main/tokenizer.json",
-          "duration": 689.2999997138977,
+          "duration": 2725.9000000953674,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/config.json",
-          "duration": 594.7000002861023,
+          "duration": 626.5,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/tokenizer.json",
-          "duration": 20671.199999809265,
+          "duration": 21261.199999809265,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/tokenizer_config.json",
-          "duration": 2011.5,
+          "duration": 2961.5,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/onnx/model_quantized.onnx",
-          "duration": 13073.5,
+          "duration": 14275.599999904633,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/bert-base-NER/resolve/8e892123e8b7c2c0c2bd1dcb598b7d244c4e53aa/tokenizer.json",
-          "duration": 13430.299999713898,
+          "duration": 7153.699999809265,
           "transferBytes": null,
           "decodedBytes": null
         }
@@ -159,60 +159,60 @@
     },
     {
       "model": "distilbert",
-      "loadMs": 124053,
+      "loadMs": 70244.80000019073,
       "cacheState": "unknown",
       "resources": [
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/main/config.json",
-          "duration": 5712,
+          "duration": 6816.300000190735,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/main/tokenizer_config.json",
-          "duration": 672.3000001907349,
+          "duration": 665.0999999046326,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/main/onnx/model_quantized.onnx",
-          "duration": 667,
+          "duration": 602.5999999046326,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/main/tokenizer.json",
-          "duration": 715.7000002861023,
+          "duration": 697.1000003814697,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/c2a4dbf593c57f47004c5bc2d3770d311aee9c43/config.json",
-          "duration": 650.9000000953674,
+          "duration": 629.3000001907349,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/c2a4dbf593c57f47004c5bc2d3770d311aee9c43/tokenizer.json",
-          "duration": 116740.90000009537,
+          "duration": 61941.2000002861,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/c2a4dbf593c57f47004c5bc2d3770d311aee9c43/tokenizer_config.json",
-          "duration": 777.2000002861023,
+          "duration": 897.0999999046326,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/c2a4dbf593c57f47004c5bc2d3770d311aee9c43/onnx/model_quantized.onnx",
-          "duration": 15201.299999713898,
+          "duration": 14514.599999904633,
           "transferBytes": null,
           "decodedBytes": null
         },
         {
           "url": "https://huggingface.co/Xenova/distilbert-base-multilingual-cased-ner-hrl/resolve/c2a4dbf593c57f47004c5bc2d3770d311aee9c43/tokenizer.json",
-          "duration": 18743,
+          "duration": 13728.599999904633,
           "transferBytes": null,
           "decodedBytes": null
         }
@@ -2614,7 +2614,7 @@
         }
       ],
       "error": null,
-      "ms": 73.80000019073486,
+      "ms": 53.200000286102295,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -2664,7 +2664,7 @@
         }
       ],
       "error": null,
-      "ms": 1749.5,
+      "ms": 2561,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -2726,7 +2726,7 @@
         }
       ],
       "error": null,
-      "ms": 17.199999809265137,
+      "ms": 12.5,
       "counts": {
         "tp": 2,
         "fp": 1,
@@ -2788,7 +2788,7 @@
         }
       ],
       "error": null,
-      "ms": 17.59999990463257,
+      "ms": 12.599999904632568,
       "counts": {
         "tp": 2,
         "fp": 1,
@@ -2832,7 +2832,7 @@
         }
       ],
       "error": null,
-      "ms": 26.100000381469727,
+      "ms": 13.299999713897705,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -2876,7 +2876,7 @@
         }
       ],
       "error": null,
-      "ms": 26.300000190734863,
+      "ms": 13.5,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -2929,7 +2929,7 @@
         }
       ],
       "error": null,
-      "ms": 51.80000019073486,
+      "ms": 15.699999809265137,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -2976,7 +2976,7 @@
         }
       ],
       "error": null,
-      "ms": 51.90000009536743,
+      "ms": 15.800000190734863,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -3020,7 +3020,7 @@
         }
       ],
       "error": null,
-      "ms": 13.599999904632568,
+      "ms": 11.400000095367432,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -3061,7 +3061,7 @@
         }
       ],
       "error": null,
-      "ms": 13.799999713897705,
+      "ms": 11.599999904632568,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -3105,7 +3105,7 @@
         }
       ],
       "error": null,
-      "ms": 19.600000381469727,
+      "ms": 17.200000286102295,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -3152,7 +3152,7 @@
         }
       ],
       "error": null,
-      "ms": 19.700000286102295,
+      "ms": 17.300000190734863,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -3186,7 +3186,7 @@
       "config": "gravitee:model",
       "spans": [],
       "error": null,
-      "ms": 15.900000095367432,
+      "ms": 12.699999809265137,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -3227,7 +3227,7 @@
         }
       ],
       "error": null,
-      "ms": 16.09999990463257,
+      "ms": 13,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -3271,7 +3271,7 @@
         }
       ],
       "error": null,
-      "ms": 15,
+      "ms": 12,
       "counts": {
         "tp": 0,
         "fp": 1,
@@ -3315,7 +3315,7 @@
         }
       ],
       "error": null,
-      "ms": 15.099999904632568,
+      "ms": 12,
       "counts": {
         "tp": 0,
         "fp": 1,
@@ -3346,452 +3346,6 @@
     {
       "id": "eval-zh-place",
       "language": "zh",
-      "config": "gravitee:model",
-      "spans": [],
-      "error": null,
-      "ms": 14.100000381469727,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-zh-place",
-      "language": "zh",
-      "config": "gravitee:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 14.300000190734863,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-fr",
-      "language": "fr",
-      "config": "gravitee:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 22,
-          "confidence": "high",
-          "score": 0.920723307132721,
-          "label": "PERSON",
-          "source": "gravitee"
-        },
-        {
-          "type": "LOCATION",
-          "start": 25,
-          "end": 30,
-          "confidence": "medium",
-          "score": 0.7907133102416992,
-          "label": "LOCATION",
-          "source": "gravitee"
-        }
-      ],
-      "error": null,
-      "ms": 14.599999904632568,
-      "counts": {
-        "tp": 1,
-        "fp": 1,
-        "fn": 1,
-        "gold": 2,
-        "covered": 2,
-        "excess": 10,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 1,
-        "fp": 1,
-        "fn": 1,
-        "gold": 2,
-        "covered": 2,
-        "excess": 10,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-fr",
-      "language": "fr",
-      "config": "gravitee:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 22,
-          "confidence": "high",
-          "score": 0.920723307132721,
-          "label": "PERSON",
-          "source": "gravitee"
-        },
-        {
-          "type": "LOCATION",
-          "start": 25,
-          "end": 30,
-          "confidence": "medium",
-          "score": 0.7907133102416992,
-          "label": "LOCATION",
-          "source": "gravitee"
-        }
-      ],
-      "error": null,
-      "ms": 14.900000095367432,
-      "counts": {
-        "tp": 1,
-        "fp": 1,
-        "fn": 1,
-        "gold": 2,
-        "covered": 2,
-        "excess": 10,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 1,
-        "fp": 1,
-        "fn": 1,
-        "gold": 2,
-        "covered": 2,
-        "excess": 10,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-prose",
-      "language": "en",
-      "config": "gravitee:model",
-      "spans": [],
-      "error": null,
-      "ms": 12.899999618530273,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-prose",
-      "language": "en",
-      "config": "gravitee:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 13,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-code",
-      "language": "en",
-      "config": "gravitee:model",
-      "spans": [],
-      "error": null,
-      "ms": 21.40000009536743,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-code",
-      "language": "en",
-      "config": "gravitee:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 21.899999618530273,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ip",
-      "language": "en",
-      "config": "gravitee:model",
-      "spans": [],
-      "error": null,
-      "ms": 18.300000190734863,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ip",
-      "language": "en",
-      "config": "gravitee:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 18.40000009536743,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-zh",
-      "language": "zh",
-      "config": "gravitee:model",
-      "spans": [],
-      "error": null,
-      "ms": 12.300000190734863,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-zh",
-      "language": "zh",
-      "config": "gravitee:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 12.300000190734863,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ambiguous",
-      "language": "en",
       "config": "gravitee:model",
       "spans": [],
       "error": null,
@@ -3799,6 +3353,452 @@
       "counts": {
         "tp": 0,
         "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-zh-place",
+      "language": "zh",
+      "config": "gravitee:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 11.199999809265137,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-fr",
+      "language": "fr",
+      "config": "gravitee:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 22,
+          "confidence": "high",
+          "score": 0.920723307132721,
+          "label": "PERSON",
+          "source": "gravitee"
+        },
+        {
+          "type": "LOCATION",
+          "start": 25,
+          "end": 30,
+          "confidence": "medium",
+          "score": 0.7907133102416992,
+          "label": "LOCATION",
+          "source": "gravitee"
+        }
+      ],
+      "error": null,
+      "ms": 10.099999904632568,
+      "counts": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "gold": 2,
+        "covered": 2,
+        "excess": 10,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "gold": 2,
+        "covered": 2,
+        "excess": 10,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-fr",
+      "language": "fr",
+      "config": "gravitee:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 22,
+          "confidence": "high",
+          "score": 0.920723307132721,
+          "label": "PERSON",
+          "source": "gravitee"
+        },
+        {
+          "type": "LOCATION",
+          "start": 25,
+          "end": 30,
+          "confidence": "medium",
+          "score": 0.7907133102416992,
+          "label": "LOCATION",
+          "source": "gravitee"
+        }
+      ],
+      "error": null,
+      "ms": 10.099999904632568,
+      "counts": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "gold": 2,
+        "covered": 2,
+        "excess": 10,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "gold": 2,
+        "covered": 2,
+        "excess": 10,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-prose",
+      "language": "en",
+      "config": "gravitee:model",
+      "spans": [],
+      "error": null,
+      "ms": 15.600000381469727,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-prose",
+      "language": "en",
+      "config": "gravitee:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 15.700000286102295,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-code",
+      "language": "en",
+      "config": "gravitee:model",
+      "spans": [],
+      "error": null,
+      "ms": 20.5,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-code",
+      "language": "en",
+      "config": "gravitee:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 21.09999990463257,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ip",
+      "language": "en",
+      "config": "gravitee:model",
+      "spans": [],
+      "error": null,
+      "ms": 15.199999809265137,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ip",
+      "language": "en",
+      "config": "gravitee:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 15.400000095367432,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-zh",
+      "language": "zh",
+      "config": "gravitee:model",
+      "spans": [],
+      "error": null,
+      "ms": 10.799999713897705,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-zh",
+      "language": "zh",
+      "config": "gravitee:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 10.900000095367432,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ambiguous",
+      "language": "en",
+      "config": "gravitee:model",
+      "spans": [],
+      "error": null,
+      "ms": 11.599999904632568,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
         "fn": 0,
         "gold": 0,
         "covered": 0,
@@ -3829,7 +3829,7 @@
       "config": "gravitee:hybrid",
       "spans": [],
       "error": null,
-      "ms": 11.299999713897705,
+      "ms": 11.699999809265137,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -3882,7 +3882,7 @@
         }
       ],
       "error": null,
-      "ms": 11.5,
+      "ms": 13.099999904632568,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -3935,7 +3935,7 @@
         }
       ],
       "error": null,
-      "ms": 11.600000381469727,
+      "ms": 13.300000190734863,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -3979,7 +3979,7 @@
         }
       ],
       "error": null,
-      "ms": 151.30000019073486,
+      "ms": 174.69999980926514,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -4029,7 +4029,7 @@
         }
       ],
       "error": null,
-      "ms": 22863.5,
+      "ms": 25404.5,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -4082,7 +4082,7 @@
         }
       ],
       "error": null,
-      "ms": 41.69999980926514,
+      "ms": 45.39999961853027,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -4135,7 +4135,7 @@
         }
       ],
       "error": null,
-      "ms": 41.89999961853027,
+      "ms": 45.5,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -4179,7 +4179,7 @@
         }
       ],
       "error": null,
-      "ms": 43.30000019073486,
+      "ms": 42.89999961853027,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -4223,7 +4223,7 @@
         }
       ],
       "error": null,
-      "ms": 43.5,
+      "ms": 43,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -4257,7 +4257,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 84,
+      "ms": 86,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4304,7 +4304,7 @@
         }
       ],
       "error": null,
-      "ms": 84.10000038146973,
+      "ms": 86.09999990463257,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -4338,7 +4338,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 61.59999990463257,
+      "ms": 62.59999990463257,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4379,7 +4379,7 @@
         }
       ],
       "error": null,
-      "ms": 61.89999961853027,
+      "ms": 62.90000009536743,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -4413,7 +4413,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 101.40000009536743,
+      "ms": 103.69999980926514,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4460,7 +4460,7 @@
         }
       ],
       "error": null,
-      "ms": 101.40000009536743,
+      "ms": 103.69999980926514,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -4494,7 +4494,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 75.10000038146973,
+      "ms": 76.30000019073486,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4535,7 +4535,7 @@
         }
       ],
       "error": null,
-      "ms": 75.30000019073486,
+      "ms": 76.5,
       "counts": {
         "tp": 1,
         "fp": 0,
@@ -4569,7 +4569,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 63.40000009536743,
+      "ms": 64.90000009536743,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4603,7 +4603,7 @@
       "config": "bert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 63.59999990463257,
+      "ms": 65,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4637,7 +4637,7 @@
       "config": "bert:model",
       "spans": [],
       "error": null,
-      "ms": 53.90000009536743,
+      "ms": 56.30000019073486,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4671,7 +4671,7 @@
       "config": "bert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 54,
+      "ms": 56.5,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -4721,6 +4721,1317 @@
           "score": 0.9939113855361938,
           "label": "LOC",
           "source": "bert"
+        }
+      ],
+      "error": null,
+      "ms": 56.40000009536743,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-fr",
+      "language": "fr",
+      "config": "bert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 12,
+          "confidence": "high",
+          "score": 0.9982029596964518,
+          "label": "PER",
+          "source": "bert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 25,
+          "end": 30,
+          "confidence": "high",
+          "score": 0.9939113855361938,
+          "label": "LOC",
+          "source": "bert"
+        }
+      ],
+      "error": null,
+      "ms": 56.59999990463257,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 14,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-prose",
+      "language": "en",
+      "config": "bert:model",
+      "spans": [],
+      "error": null,
+      "ms": 57.30000019073486,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-prose",
+      "language": "en",
+      "config": "bert:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 57.5,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 39,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-code",
+      "language": "en",
+      "config": "bert:model",
+      "spans": [],
+      "error": null,
+      "ms": 102.80000019073486,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-code",
+      "language": "en",
+      "config": "bert:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 103,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 48,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ip",
+      "language": "en",
+      "config": "bert:model",
+      "spans": [],
+      "error": null,
+      "ms": 92,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ip",
+      "language": "en",
+      "config": "bert:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 92,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 47,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-zh",
+      "language": "zh",
+      "config": "bert:model",
+      "spans": [],
+      "error": null,
+      "ms": 60.700000286102295,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-zh",
+      "language": "zh",
+      "config": "bert:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 60.90000009536743,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 11,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ambiguous",
+      "language": "en",
+      "config": "bert:model",
+      "spans": [],
+      "error": null,
+      "ms": 47.90000009536743,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-clean-ambiguous",
+      "language": "en",
+      "config": "bert:hybrid",
+      "spans": [],
+      "error": null,
+      "ms": 47.90000009536743,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-mixed",
+      "language": "mixed",
+      "config": "bert:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 4,
+          "end": 16,
+          "confidence": "high",
+          "score": 0.9210980534553528,
+          "label": "PER",
+          "source": "bert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 20,
+          "end": 25,
+          "confidence": "high",
+          "score": 0.9481116533279419,
+          "label": "LOC",
+          "source": "bert"
+        }
+      ],
+      "error": null,
+      "ms": 60.40000009536743,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-mixed",
+      "language": "mixed",
+      "config": "bert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 4,
+          "end": 16,
+          "confidence": "high",
+          "score": 0.9210980534553528,
+          "label": "PER",
+          "source": "bert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 20,
+          "end": 25,
+          "confidence": "high",
+          "score": 0.9481116533279419,
+          "label": "LOC",
+          "source": "bert"
+        }
+      ],
+      "error": null,
+      "ms": 60.59999990463257,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-ticket",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [
+        {
+          "type": "ORGANIZATION",
+          "start": 14,
+          "end": 27,
+          "confidence": "high",
+          "score": 0.9280732870101929,
+          "label": "ORG",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 129.2999997138977,
+      "counts": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 2,
+        "gold": 2,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 1,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 43,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-ticket",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "ORGANIZATION",
+          "start": 14,
+          "end": 27,
+          "confidence": "high",
+          "score": 0.9280732870101929,
+          "label": "ORG",
+          "source": "distilbert"
+        },
+        {
+          "type": "EMAIL",
+          "start": 38,
+          "end": 55,
+          "source": "regex"
+        }
+      ],
+      "error": null,
+      "ms": 70407.80000019073,
+      "counts": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 26,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 1,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 43,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-visit",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 11,
+          "confidence": "high",
+          "score": 0.9998915195465088,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 20,
+          "end": 26,
+          "confidence": "high",
+          "score": 0.9994815587997437,
+          "label": "LOC",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 28.5,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 20,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 20,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-visit",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 11,
+          "confidence": "high",
+          "score": 0.9998915195465088,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 20,
+          "end": 26,
+          "confidence": "high",
+          "score": 0.9994815587997437,
+          "label": "LOC",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 29.09999990463257,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 20,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 20,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-employer",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 12,
+          "confidence": "high",
+          "score": 0.9996486902236938,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "ORGANIZATION",
+          "start": 20,
+          "end": 26,
+          "confidence": "high",
+          "score": 0.9998286962509155,
+          "label": "ORG",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 50.80000019073486,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-employer",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 12,
+          "confidence": "high",
+          "score": 0.9996486902236938,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "ORGANIZATION",
+          "start": 20,
+          "end": 26,
+          "confidence": "high",
+          "score": 0.9998286962509155,
+          "label": "ORG",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 50.90000009536743,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-repeated",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [],
+      "error": null,
+      "ms": 65.69999980926514,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 19,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 51,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-repeated",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "EMAIL",
+          "start": 0,
+          "end": 16,
+          "source": "regex"
+        },
+        {
+          "type": "EMAIL",
+          "start": 34,
+          "end": 50,
+          "source": "regex"
+        }
+      ],
+      "error": null,
+      "ms": 65.80000019073486,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 19,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 51,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-emoji",
+      "language": "mixed",
+      "config": "distilbert:model",
+      "spans": [],
+      "error": null,
+      "ms": 39.59999990463257,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "gold": 1,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 15,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 30,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-emoji",
+      "language": "mixed",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "EMAIL",
+          "start": 15,
+          "end": 30,
+          "source": "regex"
+        }
+      ],
+      "error": null,
+      "ms": 39.69999980926514,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 15,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 30,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-log",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [],
+      "error": null,
+      "ms": 57.09999990463257,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "gold": 2,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 28,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 53,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-log",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "IP_ADDRESS",
+          "start": 22,
+          "end": 32,
+          "source": "regex"
+        },
+        {
+          "type": "EMAIL",
+          "start": 38,
+          "end": 53,
+          "source": "regex"
+        }
+      ],
+      "error": null,
+      "ms": 57.200000286102295,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 28,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 53,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-callback",
+      "language": "en",
+      "config": "distilbert:model",
+      "spans": [],
+      "error": null,
+      "ms": 74.59999990463257,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "gold": 1,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 30,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 0,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 44,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-callback",
+      "language": "en",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "PHONE",
+          "start": 16,
+          "end": 30,
+          "source": "regex"
+        }
+      ],
+      "error": null,
+      "ms": 74.69999980926514,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 30,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "gold": 0,
+        "covered": 0,
+        "excess": 0,
+        "nonSensitive": 44,
+        "clean": 1,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-zh-name",
+      "language": "zh",
+      "config": "distilbert:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 8,
+          "end": 11,
+          "confidence": "high",
+          "score": 0.9998825987180074,
+          "label": "PER",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 40.80000019073486,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-zh-name",
+      "language": "zh",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 8,
+          "end": 11,
+          "confidence": "high",
+          "score": 0.9998825987180074,
+          "label": "PER",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 40.90000009536743,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "gold": 1,
+        "covered": 1,
+        "excess": 0,
+        "nonSensitive": 9,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-zh-place",
+      "language": "zh",
+      "config": "distilbert:model",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 3,
+          "confidence": "high",
+          "score": 0.9998994867006937,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 4,
+          "end": 6,
+          "confidence": "high",
+          "score": 0.9994115829467773,
+          "label": "LOC",
+          "source": "distilbert"
+        }
+      ],
+      "error": null,
+      "ms": 59.09999990463257,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      },
+      "common": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "gold": 2,
+        "covered": 2,
+        "excess": 0,
+        "nonSensitive": 4,
+        "clean": 0,
+        "changedClean": 0,
+        "allCovered": 1,
+        "cases": 1
+      }
+    },
+    {
+      "id": "eval-zh-place",
+      "language": "zh",
+      "config": "distilbert:hybrid",
+      "spans": [
+        {
+          "type": "PERSON_NAME",
+          "start": 0,
+          "end": 3,
+          "confidence": "high",
+          "score": 0.9998994867006937,
+          "label": "PER",
+          "source": "distilbert"
+        },
+        {
+          "type": "LOCATION",
+          "start": 4,
+          "end": 6,
+          "confidence": "high",
+          "score": 0.9994115829467773,
+          "label": "LOC",
+          "source": "distilbert"
         }
       ],
       "error": null,
@@ -4732,1317 +6043,6 @@
         "gold": 2,
         "covered": 2,
         "excess": 0,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-fr",
-      "language": "fr",
-      "config": "bert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 12,
-          "confidence": "high",
-          "score": 0.9982029596964518,
-          "label": "PER",
-          "source": "bert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 25,
-          "end": 30,
-          "confidence": "high",
-          "score": 0.9939113855361938,
-          "label": "LOC",
-          "source": "bert"
-        }
-      ],
-      "error": null,
-      "ms": 59.59999990463257,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 14,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-prose",
-      "language": "en",
-      "config": "bert:model",
-      "spans": [],
-      "error": null,
-      "ms": 59.40000009536743,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-prose",
-      "language": "en",
-      "config": "bert:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 59.5,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 39,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-code",
-      "language": "en",
-      "config": "bert:model",
-      "spans": [],
-      "error": null,
-      "ms": 110.39999961853027,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-code",
-      "language": "en",
-      "config": "bert:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 110.5,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 48,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ip",
-      "language": "en",
-      "config": "bert:model",
-      "spans": [],
-      "error": null,
-      "ms": 98.59999990463257,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ip",
-      "language": "en",
-      "config": "bert:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 98.69999980926514,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 47,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-zh",
-      "language": "zh",
-      "config": "bert:model",
-      "spans": [],
-      "error": null,
-      "ms": 86.80000019073486,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-zh",
-      "language": "zh",
-      "config": "bert:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 87,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 11,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ambiguous",
-      "language": "en",
-      "config": "bert:model",
-      "spans": [],
-      "error": null,
-      "ms": 59.30000019073486,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-clean-ambiguous",
-      "language": "en",
-      "config": "bert:hybrid",
-      "spans": [],
-      "error": null,
-      "ms": 59.30000019073486,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-mixed",
-      "language": "mixed",
-      "config": "bert:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 4,
-          "end": 16,
-          "confidence": "high",
-          "score": 0.9210980534553528,
-          "label": "PER",
-          "source": "bert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 20,
-          "end": 25,
-          "confidence": "high",
-          "score": 0.9481116533279419,
-          "label": "LOC",
-          "source": "bert"
-        }
-      ],
-      "error": null,
-      "ms": 67.40000009536743,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-mixed",
-      "language": "mixed",
-      "config": "bert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 4,
-          "end": 16,
-          "confidence": "high",
-          "score": 0.9210980534553528,
-          "label": "PER",
-          "source": "bert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 20,
-          "end": 25,
-          "confidence": "high",
-          "score": 0.9481116533279419,
-          "label": "LOC",
-          "source": "bert"
-        }
-      ],
-      "error": null,
-      "ms": 67.5,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-ticket",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [
-        {
-          "type": "ORGANIZATION",
-          "start": 14,
-          "end": 27,
-          "confidence": "high",
-          "score": 0.9280732870101929,
-          "label": "ORG",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 140.2000002861023,
-      "counts": {
-        "tp": 0,
-        "fp": 1,
-        "fn": 2,
-        "gold": 2,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 1,
-        "fn": 1,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 43,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-ticket",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "ORGANIZATION",
-          "start": 14,
-          "end": 27,
-          "confidence": "high",
-          "score": 0.9280732870101929,
-          "label": "ORG",
-          "source": "distilbert"
-        },
-        {
-          "type": "EMAIL",
-          "start": 38,
-          "end": 55,
-          "source": "regex"
-        }
-      ],
-      "error": null,
-      "ms": 124221.69999980927,
-      "counts": {
-        "tp": 1,
-        "fp": 1,
-        "fn": 1,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 26,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 1,
-        "fn": 1,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 43,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-visit",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 11,
-          "confidence": "high",
-          "score": 0.9998915195465088,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 20,
-          "end": 26,
-          "confidence": "high",
-          "score": 0.9994815587997437,
-          "label": "LOC",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 25.5,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 20,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 20,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-visit",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 11,
-          "confidence": "high",
-          "score": 0.9998915195465088,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 20,
-          "end": 26,
-          "confidence": "high",
-          "score": 0.9994815587997437,
-          "label": "LOC",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 27,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 20,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 20,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-employer",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 12,
-          "confidence": "high",
-          "score": 0.9996486902236938,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "ORGANIZATION",
-          "start": 20,
-          "end": 26,
-          "confidence": "high",
-          "score": 0.9998286962509155,
-          "label": "ORG",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 23,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-employer",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 12,
-          "confidence": "high",
-          "score": 0.9996486902236938,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "ORGANIZATION",
-          "start": 20,
-          "end": 26,
-          "confidence": "high",
-          "score": 0.9998286962509155,
-          "label": "ORG",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 23.09999990463257,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-repeated",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [],
-      "error": null,
-      "ms": 48.700000286102295,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 19,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 51,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-repeated",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "EMAIL",
-          "start": 0,
-          "end": 16,
-          "source": "regex"
-        },
-        {
-          "type": "EMAIL",
-          "start": 34,
-          "end": 50,
-          "source": "regex"
-        }
-      ],
-      "error": null,
-      "ms": 48.90000009536743,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 19,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 51,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-emoji",
-      "language": "mixed",
-      "config": "distilbert:model",
-      "spans": [],
-      "error": null,
-      "ms": 33.200000286102295,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 1,
-        "gold": 1,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 15,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 30,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-emoji",
-      "language": "mixed",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "EMAIL",
-          "start": 15,
-          "end": 30,
-          "source": "regex"
-        }
-      ],
-      "error": null,
-      "ms": 33.59999990463257,
-      "counts": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 15,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 30,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-log",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [],
-      "error": null,
-      "ms": 49.19999980926514,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 2,
-        "gold": 2,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 28,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 53,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-log",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "IP_ADDRESS",
-          "start": 22,
-          "end": 32,
-          "source": "regex"
-        },
-        {
-          "type": "EMAIL",
-          "start": 38,
-          "end": 53,
-          "source": "regex"
-        }
-      ],
-      "error": null,
-      "ms": 49.19999980926514,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 28,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 53,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-callback",
-      "language": "en",
-      "config": "distilbert:model",
-      "spans": [],
-      "error": null,
-      "ms": 33.80000019073486,
-      "counts": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 1,
-        "gold": 1,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 30,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 0,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 44,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-callback",
-      "language": "en",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "PHONE",
-          "start": 16,
-          "end": 30,
-          "source": "regex"
-        }
-      ],
-      "error": null,
-      "ms": 33.80000019073486,
-      "counts": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 30,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 0,
-        "fp": 0,
-        "fn": 0,
-        "gold": 0,
-        "covered": 0,
-        "excess": 0,
-        "nonSensitive": 44,
-        "clean": 1,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-zh-name",
-      "language": "zh",
-      "config": "distilbert:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 8,
-          "end": 11,
-          "confidence": "high",
-          "score": 0.9998825987180074,
-          "label": "PER",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 32,
-      "counts": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-zh-name",
-      "language": "zh",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 8,
-          "end": 11,
-          "confidence": "high",
-          "score": 0.9998825987180074,
-          "label": "PER",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 32.19999980926514,
-      "counts": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 1,
-        "fp": 0,
-        "fn": 0,
-        "gold": 1,
-        "covered": 1,
-        "excess": 0,
-        "nonSensitive": 9,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-zh-place",
-      "language": "zh",
-      "config": "distilbert:model",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 3,
-          "confidence": "high",
-          "score": 0.9998994867006937,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 4,
-          "end": 6,
-          "confidence": "high",
-          "score": 0.9994115829467773,
-          "label": "LOC",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 26.5,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      },
-      "common": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
-        "nonSensitive": 4,
-        "clean": 0,
-        "changedClean": 0,
-        "allCovered": 1,
-        "cases": 1
-      }
-    },
-    {
-      "id": "eval-zh-place",
-      "language": "zh",
-      "config": "distilbert:hybrid",
-      "spans": [
-        {
-          "type": "PERSON_NAME",
-          "start": 0,
-          "end": 3,
-          "confidence": "high",
-          "score": 0.9998994867006937,
-          "label": "PER",
-          "source": "distilbert"
-        },
-        {
-          "type": "LOCATION",
-          "start": 4,
-          "end": 6,
-          "confidence": "high",
-          "score": 0.9994115829467773,
-          "label": "LOC",
-          "source": "distilbert"
-        }
-      ],
-      "error": null,
-      "ms": 26.700000286102295,
-      "counts": {
-        "tp": 2,
-        "fp": 0,
-        "fn": 0,
-        "gold": 2,
-        "covered": 2,
-        "excess": 0,
         "nonSensitive": 4,
         "clean": 0,
         "changedClean": 0,
@@ -6088,7 +6088,7 @@
         }
       ],
       "error": null,
-      "ms": 21.699999809265137,
+      "ms": 29.300000190734863,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -6141,7 +6141,7 @@
         }
       ],
       "error": null,
-      "ms": 21.699999809265137,
+      "ms": 29.59999990463257,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -6175,7 +6175,7 @@
       "config": "distilbert:model",
       "spans": [],
       "error": null,
-      "ms": 29.699999809265137,
+      "ms": 32.39999961853027,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6209,7 +6209,7 @@
       "config": "distilbert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 29.90000009536743,
+      "ms": 32.60000038146973,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6243,7 +6243,7 @@
       "config": "distilbert:model",
       "spans": [],
       "error": null,
-      "ms": 52.200000286102295,
+      "ms": 64.7999997138977,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6277,7 +6277,7 @@
       "config": "distilbert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 52.40000009536743,
+      "ms": 64.89999961853027,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6311,7 +6311,7 @@
       "config": "distilbert:model",
       "spans": [],
       "error": null,
-      "ms": 42,
+      "ms": 45.89999961853027,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6345,7 +6345,7 @@
       "config": "distilbert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 42,
+      "ms": 46.10000038146973,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6379,7 +6379,7 @@
       "config": "distilbert:model",
       "spans": [],
       "error": null,
-      "ms": 32.200000286102295,
+      "ms": 37.799999713897705,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6413,7 +6413,7 @@
       "config": "distilbert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 32.30000019073486,
+      "ms": 37.89999961853027,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6447,7 +6447,7 @@
       "config": "distilbert:model",
       "spans": [],
       "error": null,
-      "ms": 23.299999713897705,
+      "ms": 30.199999809265137,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6481,7 +6481,7 @@
       "config": "distilbert:hybrid",
       "spans": [],
       "error": null,
-      "ms": 23.399999618530273,
+      "ms": 30.399999618530273,
       "counts": {
         "tp": 0,
         "fp": 0,
@@ -6534,7 +6534,7 @@
         }
       ],
       "error": null,
-      "ms": 29.699999809265137,
+      "ms": 34.89999961853027,
       "counts": {
         "tp": 2,
         "fp": 0,
@@ -6587,7 +6587,7 @@
         }
       ],
       "error": null,
-      "ms": 29.90000009536743,
+      "ms": 35.10000038146973,
       "counts": {
         "tp": 2,
         "fp": 0,

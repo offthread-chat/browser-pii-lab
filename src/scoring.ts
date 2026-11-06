@@ -1,6 +1,11 @@
 import { intervals } from "./detection";
 import { validateSpans, type Span } from "./types";
-export function score(text: string, gold: Span[], predicted: Span[]) {
+export function score(
+  text: string,
+  gold: Span[],
+  predicted: Span[],
+  failed = false,
+) {
   validateSpans(text, gold);
   validateSpans(text, predicted);
   const remaining = new Set(gold.map((_, i) => i));
@@ -41,7 +46,7 @@ export function score(text: string, gold: Span[], predicted: Span[]) {
     nonSensitive,
     clean: gold.length === 0 ? 1 : 0,
     changedClean: gold.length === 0 && predicted.length > 0 ? 1 : 0,
-    allCovered: covered === gold.length ? 1 : 0,
+    allCovered: !failed && covered === gold.length ? 1 : 0,
     cases: 1,
   };
 }

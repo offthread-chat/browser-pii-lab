@@ -131,3 +131,8 @@ test("committed long-input files match their manifest and preserve chunk offsets
       expect(text.slice(c.start, c.start + c.text.length)).toBe(c.text);
   }
 });
+
+test("a failed request is not counted as fully covered even for clean or filtered slices", () => {
+  expect(score("plain", [], [], true).allCovered).toBe(0);
+  expect(score("plain", [], []).allCovered).toBe(1);
+});

@@ -147,9 +147,11 @@ try {
   }
   assert.deepEqual(errors, [], "No uncaught browser errors");
   const failureContext = await browser.newContext();
-  await failureContext.route("https://huggingface.co/**", (route) =>
-    route.abort(),
-  );
+  let blockedRequests = 0;
+  await failureContext.route("https://huggingface.co/**", (route) => {
+    blockedRequests++;
+    return route.abort();
+  });
   const failurePage = await failureContext.newPage();
   await failurePage.goto("http://127.0.0.1:4187");
   await failurePage.locator("#mode").selectOption("model");
@@ -166,6 +168,21 @@ try {
   assert.equal(
     await failurePage.locator("#redacted").innerText(),
     "No result yet.",
+  );
+  const requestsBeforeFailureBenchmark = blockedRequests;
+  const failedBenchmark = await failurePage.evaluate(
+    async () => await (window as any).piiLab.benchmark(["gravitee"]),
+  );
+  for (const row of failedBenchmark.summaries.filter(
+    (s: any) => s.config !== "regex",
+  )) {
+    assert.equal(row.failures, 16);
+    assert.equal(row.full.allCoveredRate, 0);
+    assert.equal(row.commonEntities.allCoveredRate, 0);
+  }
+  assert.ok(
+    blockedRequests - requestsBeforeFailureBenchmark < 10,
+    "A failed model must not reload for every case",
   );
   await failureContext.close();
   await writeFile(
@@ -189,6 +206,7 @@ try {
           "no uncaught errors",
           "benchmark UI and JSON export",
           "blocked model download surfaces failure",
+          "failed benchmark skips repeated downloads and counts coverage failures",
         ],
         requestOrigins: [
           ...new Set(requests.map((r) => new URL(r.url).origin)),

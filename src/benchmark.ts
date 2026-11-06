@@ -50,14 +50,12 @@ export async function benchmark(
       spans,
       error,
       ms,
-      counts: {
-        ...score(c.text, c.entities, spans),
-        ...(error ? { allCovered: 0 } : {}),
-      },
+      counts: score(c.text, c.entities, spans, Boolean(error)),
       common: score(
         c.text,
         c.entities.filter((e) => CONFIG.commonTypes.includes(e.type)),
         spans.filter((e) => CONFIG.commonTypes.includes(e.type)),
+        Boolean(error),
       ),
     });
   for (const c of cases) {
@@ -134,6 +132,7 @@ export async function benchmark(
                 c.text,
                 c.entities.filter((e) => e.type === type),
                 x.spans.filter((e) => e.type === type),
+                Boolean(x.error),
               );
             }),
           ),

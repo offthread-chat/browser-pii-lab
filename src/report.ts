@@ -108,6 +108,7 @@ try {
         "p95 ms",
         "Tokens/s",
         "CPU %",
+        "Baseline RSS MiB",
         "Peak RSS MiB",
       ],
       summaries.map((s) => [
@@ -119,6 +120,7 @@ try {
         fmt(s.p95Ms),
         fmt(s.inputTokensPerSecond),
         fmt(s.cpuPercent),
+        fmt(s.baselineRssMiB),
         fmt(s.peakRssMiB),
       ]),
     );

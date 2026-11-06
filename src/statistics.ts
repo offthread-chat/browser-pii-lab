@@ -50,6 +50,7 @@ export function summarize(runs: ProfileRun[]) {
     ),
     firstChunkMs: median(nums((r) => r.value!.firstChunkMs)),
     cpuPercent: median(nums((r) => r.cpuPercentOneCore)),
+    baselineRssMiB: median(nums((r) => r.baselineRssMiB)),
     peakRssMiB: nums((r) => r.peakRssMiB).length
       ? Math.max(...nums((r) => r.peakRssMiB))
       : null,

@@ -67,21 +67,31 @@ for (const [pi, panel] of panels.entries()) {
     bottom = oy + 262,
     width = 420,
     height = 190;
+  const referenceCounts = sizes.map(
+    (size) =>
+      data.corpus.fixtures.find((f: any) => f.name === size)
+        .referenceTokens as number,
+  );
+  const xAt = (i: number) =>
+    left +
+    (Math.log(referenceCounts[i] / referenceCounts[0]) /
+      Math.log(referenceCounts.at(-1)! / referenceCounts[0])) *
+      width;
   for (let k = 0; k <= 4; k++) {
     const y = bottom - (k / 4) * height;
     svg += `<line x1="${left}" y1="${y}" x2="${left + width}" y2="${y}" stroke="#e3e7db"/><text x="${left - 10}" y="${y + 4}" text-anchor="end" font-size="11">${fmt((max * k) / 4, 0)}</text>`;
   }
   sizes.forEach(
     (size, i) =>
-      (svg += `<text x="${left + (i / 3) * width}" y="${bottom + 22}" text-anchor="middle" font-size="12">${size === "short" ? "36" : size.toUpperCase()}</text>`),
+      (svg += `<text x="${xAt(i)}" y="${bottom + 22}" text-anchor="middle" font-size="12">${size === "short" ? "36" : size.toUpperCase()}</text>`),
   );
-  svg += `<text x="${left}" y="${bottom + 43}" font-size="11" fill="#657260">Reference input tokens · 30 / 5 / 3 / 1 runs per model</text>`;
+  svg += `<text x="${left}" y="${bottom + 43}" font-size="11" fill="#657260">Reference tokens (log axis) · completed runs: 30 / 5 / 3 / 1</text>`;
   data.models.forEach((m: any, mi: number) => {
     const pts = sizes.map((size, i) => {
       const s = summary(m.key, size);
       const v = s[panel.key];
       return {
-        x: left + (i / 3) * width,
+        x: xAt(i),
         y: bottom - (((v ?? 0) * panel.factor) / max) * height,
         v: v === null ? null : v * panel.factor,
       };
@@ -97,11 +107,11 @@ for (const [pi, panel] of panels.entries()) {
 }
 svg += `<text x="40" y="908" font-size="13">Latency and throughput: medians. Memory: largest sampled RSS sum. CPU includes all isolated Chrome processes.</text><text x="40" y="930" font-size="13">One host, fixed execution order, synthetic repetition. No generation TTFT; 100K input is chunked, not a 100K context window.</text></g></svg>`;
 writeFileSync("results/scaling.svg", svg + "\n");
-let md = `---\ncreated: 2026-11-06\nlast_updated: 2026-11-06\n---\n\n# Measured results\n\nMeasured locally in Chrome ${data.browser} on ${data.host.cpu} (${data.host.logicalCores} logical cores, ${fmt(data.host.physicalMemoryGiB)} GiB RAM). Resource run began ${data.createdUTC} UTC / ${data.createdLocal}. Inference source commit: \`${data.commit}\`.\n\n![Length scaling](scaling.svg)\n\nFor the interactive view, run the app and open [report.html](../report.html). It lets you select input length and metric and inspect memory traces. Raw resource data: [measurements.json](../public/measurements.json). Inputs and checksums: [data](../data).\n\n## Length scaling\n\nThe same synthetic English file is used for each model. Actual per-model input tokens include special tokens for each chunk and therefore differ from the whole-document reference token count. All rows below are warmed model runs; first-download observations are separate in the JSON and interactive report.\n\n| Model | Reference size | Runs | Actual tokens | Chunks | Median complete ms | p95 ms | Input tokens/s | CPU % | Peak RSS MiB |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n`;
+let md = `---\ncreated: 2026-11-06\nlast_updated: 2026-11-06\n---\n\n# Measured results\n\nMeasured locally in Chrome ${data.browser} on ${data.host.cpu} (${data.host.logicalCores} logical cores, ${fmt(data.host.physicalMemoryGiB)} GiB RAM). Resource run began ${data.createdUTC} UTC / ${data.createdLocal}. Inference source commit: \`${data.commit}\`.\n\n![Length scaling](scaling.svg)\n\nFor the interactive view, run the app and open [report.html](../report.html). It lets you select input length and metric and inspect memory traces. Raw resource data: [measurements.json](../public/measurements.json). Inputs and checksums: [data](../data).\n\n## Length scaling\n\nThe same synthetic English file is used for each model. Actual per-model input tokens include special tokens for each chunk and therefore differ from the whole-document reference token count. All rows below are warmed model runs; first-download observations are separate in the JSON and interactive report.\n\n| Model | Reference size | Completed / failed | Actual tokens | Chunks | Median complete ms | p95 ms | Input tokens/s | CPU % | Baseline RSS MiB | Peak RSS MiB |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n`;
 for (const m of data.models)
   for (const size of sizes) {
     const s = summary(m.key, size);
-    md += `| ${m.key} | ${size} | ${s.trials} | ${fmt(s.tokens, 0)} | ${fmt(s.chunks, 0)} | ${fmt(s.medianMs)} | ${fmt(s.p95Ms)} | ${fmt(s.inputTokensPerSecond)} | ${fmt(s.cpuPercent)} | ${fmt(s.peakRssMiB)} |\n`;
+    md += `| ${m.key} | ${size} | ${s.successful} / ${s.failures} | ${fmt(s.tokens, 0)} | ${fmt(s.chunks, 0)} | ${fmt(s.medianMs)} | ${fmt(s.p95Ms)} | ${fmt(s.inputTokensPerSecond)} | ${fmt(s.cpuPercent)} | ${fmt(s.baselineRssMiB)} | ${fmt(s.peakRssMiB)} |\n`;
   }
 md += `\nCPU 100% means one logical core; this is whole-Chrome CPU, not model-exclusive CPU. RSS sums can double-count shared pages and include browser/runtime overhead. Peaks are sampled, not guaranteed maxima. The worker is not reset between increasing lengths; GC and prior allocations can lower or raise later RSS baselines. Short-request CPU is especially sensitive to measurement overhead. p95 uses nearest rank and is omitted below 20 observations.\n\n## Detection quality smoke test\n\nSource commit: \`${quality.commit}\`. [Raw predictions, provenance and per-category/language scores](chromium-smoke.json). Only 16 public synthetic fixtures; these were visible during implementation and are not an independent holdout. Full-task scores include email/phone/IP; shared scores include only person/organization/location. All adapters share Offthread postprocessing.\n\n| Configuration | Full precision | Full recall | Full F1 | Shared NER F1 | Failures |\n|---|---:|---:|---:|---:|---:|\n`;
 for (const s of quality.summaries)
@@ -133,6 +143,7 @@ const rows: unknown[][] = [
     "p95_complete_ms",
     "median_input_tokens_per_second",
     "median_chrome_cpu_percent_one_core",
+    "median_baseline_chrome_rss_sum_mib",
     "peak_chrome_rss_sum_mib",
   ],
 ];
@@ -151,6 +162,7 @@ for (const model of data.models)
       s.p95Ms,
       s.inputTokensPerSecond,
       s.cpuPercent,
+      s.baselineRssMiB,
       s.peakRssMiB,
     ]);
   }

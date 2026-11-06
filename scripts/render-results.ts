@@ -181,3 +181,10 @@ writeFileSync(
     ]),
   ]),
 );
+
+const successfulWarm = data.runs.filter(
+  (r: ProfileRun) => r.phase === "warm" && !r.error,
+).length;
+const failedAttempts = data.runs.filter((r: ProfileRun) => r.error).length;
+md += `\n## Run accounting and downloads\n\n${successfulWarm} successful warmed requests; ${failedAttempts} recorded failed attempts across all phases; ${data.interruptions?.length ?? 0} separately documented interruption. Completed and failed trial counts are shown separately; failed timings do not become zero-duration successes. The profiler retains a nonzero exit status when its history contains failures, even after successful resumption.\n\nDownload [resource-summary.csv](resource-summary.csv), [quality-summary.csv](quality-summary.csv), [raw browser quality results](chromium-smoke.json), [raw resource samples](../public/measurements.json), or [browser test evidence](browser-checks.json).\n`;
+writeFileSync("results/README.md", md);

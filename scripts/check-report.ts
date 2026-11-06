@@ -35,13 +35,20 @@ try {
       );
     }
   }
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({
+  const mobile = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+  });
+  await mobile.goto("http://127.0.0.1:4187/report.html");
+  await mobile.waitForFunction(
+    () => document.querySelectorAll("#details tbody tr").length === 3,
+  );
+  assert.equal(await mobile.locator("header").count(), 1);
+  await mobile.screenshot({
     path: "test-artifacts/report-mobile.png",
     fullPage: true,
   });
   assert.equal(
-    await page.evaluate(
+    await mobile.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
     true,
